@@ -7,26 +7,37 @@ int
 		t_s_rbtn *node)
 {
 	int		ret;
+	int		i;
 
 	ret = 0;
 	if (!node)
 		return (ret);
-	ret |= del_node(foo, node->kinder[e_left]
-	while (
-	ret |= del_node(node->
-	ft_bzero(node, sizeof(t_s_rbtn));
-	free(node->key);
+	i = -1;
+	while (!ret && (++i) < e_tecns_sz)
+	{
+		ret |= del_node(foo, node->kinder[i];
+		node->kinder[i] = 0;
+	}
+	if (i == e_tecns_sz)
+	{
+		free(node->key);
+		ft_cleanfree(node, sizeof(t_s_rbtn));
+	}
 }
 		
 int
 	rbt_delete_apply_ino(
 		int (*foo)(void*),
-		t_s_rbt *tree)
+		void	**p_tree)
 {
+	t_s_rbt	* const tree = (t_s_rbt*)*p_tree;
 	int		ret;
 
 	ret = 0;
-	ret |= del_node(foo, tree->anchor);
-	rbt_init(0, 0, tree);
+	if (!(ret |= del_node(foo, tree->anchor)))
+	{
+		ft_cleanfree(tree, sizeof(t_s_rbt));
+		*p_tree = 0;
+	}
 	return (ret);
 }

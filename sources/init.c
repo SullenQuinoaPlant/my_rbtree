@@ -1,14 +1,22 @@
 #include "inner.h"
 
-void
+int
 	rbt_init(
 		t_ordering foo, size_t key_sz,
-		t_s_rbt *ret)
+		void **p_ret)
 {
 	t_s_rbt	init;
+	t_s_rbt	*alloc;
+	int		r;
 
-	init.order_foo = foo;
-	init.key_sz = key_sz;
-	init.anchor = 0;
-	*ret = init;
+	if (p_ret)
+		*p_ret = 0;
+	if (!foo || !kef_sz || !p_ret)
+		return (1);
+	if (!(alloc = malloc(sizeof(t_s_rbt))))
+		return (-1);
+	init = (t_s_rbt){foo, key_sz, 0};
+	*alloc = init;
+	*p_ret = (void*)alloc;
+	return (0);
 }

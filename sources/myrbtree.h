@@ -3,6 +3,20 @@
 
 # include <stddef.h>
 
+typedef
+enum		e_compare {
+	e_lt,
+	e_eq,
+	e_gt
+}			t_e_comp;
+
+/*key comparison type*/
+typedef
+t_e_comp
+	(*t_ordering)(
+		*void, *void);
+
+/*functions*/
 int
 	rbt_apply_inord(
 		int (*foo)(void*), void *p_tree);
@@ -29,20 +43,20 @@ int
 
 void
 	rbt_delete(
-		void *p_tree);	
+		void **p_tree);	
 
 int
 	rbt_delete_apply_ino(
-		int (*foo)(void*), void *p_tree);
+		int (*foo)(void*), void **p_tree);
 
 void
 	rbt_delete_free(
-		size_t datum_sz, void *p_tree);
+		size_t datum_sz, void **p_tree);
 
-void
+int
 	rbt_init(
 		t_ordering foo, size_t key_sz,
-		void *p_tree);
+		void* *pp_tree);
 
 int
 	rbtn_insert(

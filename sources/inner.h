@@ -1,20 +1,10 @@
 #ifndef INNER_H
 # define INNER_H 
 
-# include "myrbtree.h"
+# include <stdlib.h>
+
 # include "libft.h"
-
-typedef
-enum		e_compare {
-	e_lt,
-	e_eq,
-	e_gt
-}			t_e_comp;
-
-typedef
-t_e_comp
-	(*t_ordering)(
-		*void, *void);
+# include "myrbtree.h"
 
 typedef
 enum		e_color {

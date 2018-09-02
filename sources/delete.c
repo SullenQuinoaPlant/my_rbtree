@@ -8,15 +8,20 @@ void
 	if (!node)
 		return;
 	free(node->key);
-	ft_bzero(node, sizeof(t_s_rbtn));
+	del_node(node->kinder[e_left]);
+	del_node(node->kinder[e_right]);
+	ft_cleanfree(node, sizeof(t_s_rbtn));
 }
 		
 void
 	rbt_delete(
-		t_s_rbt *tree)
+		void **p_tree)
 {
+	t_s_rbt * const tree = (t_s_rbt*)*p_tree;
+
 	del_node(tree->anchor);
-	rbt_init(0, 0, tree);
+	ft_cleanfree(tree, sizeof(t_s_rbt));
+	*p_tree = 0;
 }
 
 static
@@ -28,13 +33,18 @@ void
 		return;
 	free(node->key);
 	ft_cleanfree(node->datum, datum_sz);
-	ft_bzero(node, sizeof(t_s_rbtn));
+	del_node_free(node->kinder[e_left]);
+	del_node_free(node->kinder[e_right]);
+	ft_cleanfree(node, sizeof(t_s_rbtn));
 }
 		
 void
 	rbt_delete_free(
-		size_t datum_sz, t_s_rbt *tree)
+		size_t datum_sz, void **p_tree)
 {
-	del_node_free(tree->anchor, datum_sz);
-	rbt_init(0, 0, tree);
+	t_s_rbt * const tree = (t_s_rbt*)*p_tree;
+
+	del_node_free(tree->anchor);
+	ft_cleanfree(tree, sizeof(t_s_rbt));
+	*p_tree = 0;
 }
