@@ -16,30 +16,35 @@ t_e_comp
 	(*t_ordering)(
 		*void, *void);
 
+typedef
+int
+	(*const t_applythis)(
+		void*);
+
 /*functions*/
 int
 	rbt_apply_inord(
-		int (*foo)(void*), void *p_tree);
+		t_applythis foo, void *p_tree);
 
 int
 	rbt_apply_preord(
-		int (*foo)(void*), void *p_tree);
+		t_applythis foo, void *p_tree);
 
 int
 	rbt_apply_prerevord(
-		int (*foo)(void*), void *p_tree);
+		t_applythis foo, void *p_tree);
 
 int
 	rbt_apply_pstord(
-		int (*foo)(void*), void *p_tree);
+		t_applythis foo, void *p_tree);
 
 int
 	rbt_apply_pstrevord(
-		int (*foo)(void*), void *p_tree);
+		t_applythis foo, void *p_tree);
 
 int
 	rbt_apply_revord(
-		int (*foo)(void*), void *p_tree);
+		t_applythis foo, void *p_tree);
 
 void
 	rbt_delete(
@@ -47,7 +52,7 @@ void
 
 int
 	rbt_delete_apply_ino(
-		int (*foo)(void*), void **p_tree);
+		t_applythis foo, void **p_tree);
 
 void
 	rbt_delete_free(
@@ -68,7 +73,7 @@ int
 
 int
 	rbtn_remove_retrieve(
-		void *key, , int (*foo)(void*),
+		void *key, t_applythis foo,
 		void *p_tree, void *ret_p_datum);
 
 int
