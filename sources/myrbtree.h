@@ -1,76 +1,68 @@
 #ifndef MYRBTREE_H
 # define MYRBTREE_H
 
-typedef
-enum		e_compare {
-	e_lt,
-	e_eq,
-	e_gt
-}			t_e_comp;
-
-typedef
-t_e_comp
-	(*t_ordering)(
-		*void, *void);
-
-typedef
-enum		e_color {
-	e_red,
-	e_black
-}			t_e_col;
-
-typedef
-struct		s_rbtree_node {
-	void		*key;
-	void		*data;
-	t_e_col		color;
-}			t_s_rbtn;
-
-typedef
-struct		s_red_black_tree {
-	t_ordering	order_foo;
-	size_t		key_sz;
-	t_s_rbtn	stem;
-}			t_s_rbt;
+# include <stddef.h>
 
 int
-	rbt_apply(
-		int (*foo)(void*), t_s_rbt *tree);
+	rbt_apply_inord(
+		int (*foo)(void*), void *p_tree);
+
+int
+	rbt_apply_preord(
+		int (*foo)(void*), void *p_tree);
+
+int
+	rbt_apply_prerevord(
+		int (*foo)(void*), void *p_tree);
+
+int
+	rbt_apply_pstord(
+		int (*foo)(void*), void *p_tree);
+
+int
+	rbt_apply_pstrevord(
+		int (*foo)(void*), void *p_tree);
+
+int
+	rbt_apply_revord(
+		int (*foo)(void*), void *p_tree);
 
 void
 	rbt_delete(
-		t_s_rbt *tree);	
+		void *p_tree);	
 
 int
-	rbt_delete_apply(
-		int (*foo)(void*), t_s_rbt *tree);
+	rbt_delete_apply_ino(
+		int (*foo)(void*), void *p_tree);
 
 void
 	rbt_delete_free(
-		t_s_rbt *tree);
+		size_t datum_sz, void *p_tree);
 
 void
 	rbt_init(
-		t_ordering, t_s_rbt *tree);
-
-int
-	rbtn_apply(
-		int (*foo)(void*), void *key, t_s_rbt *tree);
+		t_ordering foo, size_t key_sz,
+		void *p_tree);
 
 int
 	rbtn_insert(
-		void *data, void *key, t_s_rbt *tree);
+		void *datum, void *key, void *p_tree);
 
 int
 	rbtn_remove(
-		void *key, t_s_rbt *tree);
+		void *key, void *p_tree);
 
 int
-	rbtn_remove_apply(
-		void *key, , int (*foo)(void*), t_s_rbt *tree);
+	rbtn_remove_retrieve(
+		void *key, , int (*foo)(void*),
+		void *p_tree, void *ret_p_datum);
 
 int
 	rbtn_remove_free(
-		void *key, t_s_rbt *tree);
+		void *key, void *p_tree);
+
+int
+	rbtn_retrieve(
+		void *key, void *p_tree, void *ret_p_datum);
 
 #endif
