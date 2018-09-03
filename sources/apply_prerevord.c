@@ -3,7 +3,7 @@
 static
 int
 	recurse(
-		t_applythis foo, t_s_rbtn *node)
+		t_rbt_applyee foo, t_s_rbtn *node)
 {
 	int		ret;
 	int		i;
@@ -19,7 +19,7 @@ int
 	
 int
 	rbt_apply_prerevord(
-		t_applythis foo, void *p_tree)
+		t_rbt_applyee foo, void *p_tree)
 {
 	int		ret;
 
