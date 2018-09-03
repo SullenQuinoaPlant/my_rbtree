@@ -9,14 +9,13 @@ int
 
 	if (!*in)
 		return (insert_rebalance((*in = this)));
-	this->kin[e_parent] = *in;
-	cmp = (*with)(this->key, this->kin[e_parent].key);
-	if (cmp == e_eq)
+	if ((cmp = (*with)(this->key, (*in)->key)) == e_eq)
 		return (RBT_DUP_KEY);
 	else if (cmp == e_lt)
 		this->attributes |= LEFT;
 	else
 		this->attributes &= ~LEFT;
+	this->kin[e_parent] = *in;
 	return (insert(this, with, &in->kin[cmp == e_lt ? e_left : e_right]));
 }
 
