@@ -60,6 +60,15 @@ t_s_rbtn
 		t_s_rbtn *from);
 
 void
+	remove_actually(
+		t_s_rbtn *removee);
+
+int
+	remove_a_node(
+		void *at_key, t_rbt_applyee foo,
+		void *p_tree, void **ret_p_datum);
+		
+void
 	rotate(
 		int left_or_not, t_s_rbtn *at);
 

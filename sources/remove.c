@@ -55,23 +55,34 @@ static
 void
 	swap(
 		t_s_rbtn *this, t_s_rbtn *forthis,
-		t_s_rbt *in)
+		size_t key_sz)
 {
-	ft_cleanfree(this->key, in->key_sz);
+	t_s_rbtn	*p;
+
+	ft_cleanfree(this->key, key_sz);
 	this->key = forthis->key;
 	this->datum = forthis->datum;
 }
 
 int
-	remove_node(
+	remove_a_node(
 		void *key, void *p_tree,
 		t_rbt_applyee foo, void **ret_p_datum)
 {
 	t_s_rbt * const	tree = (t_s_rbt*)p_tree;
 	t_s_rbtn		*node;
 	t_s_rbtn		*rnode;
+	int				r;
 
 	if (!(node = find_node(key, tree->order_foo, tree->anchor)))
 		return (RBT_KEY_NOT_FOUND);
 	rnode = get_replacement(node);
+	r = RBT_SUCCESS;
+	if (foo)
+		r = (*foo)(node->datum);
+	if (ret_p_datum)
+		*ret_p_datum = node->datum;
+	swap(node, rnode, tree->key_sz);
+	remove_actually(rnode);
+	return (r);
 }

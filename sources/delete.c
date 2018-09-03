@@ -2,13 +2,13 @@
 
 void
 	del_node(
-		t_s_rbtn *node)
+		size_t key_sz, t_s_rbtn *node)
 {
 	if (!node)
 		return;
-	free(node->key);
-	del_node(node->kin[e_left]);
-	del_node(node->kin[e_right]);
+	ft_cleanfree(node->key, key_sz);
+	del_node(key_sz, node->kin[e_left]);
+	del_node(key_sz, node->kin[e_right]);
 	ft_cleanfree(node, sizeof(t_s_rbtn));
 }
 		
