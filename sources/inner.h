@@ -24,6 +24,7 @@ enum		e_kin_nodes {
 /*used for (t_s_rbtn).attr*/
 # define RED 0X01
 # define LEFT 0X02
+# define WEIGHT 0X04
 
 typedef
 struct		s_rbtree_node {
@@ -36,14 +37,19 @@ struct		s_rbtree_node {
 typedef
 struct		s_red_black_tree {
 	t_rbt_ordering	order_foo;
-	size_t		key_sz;
-	t_s_rbtn	*anchor;
+	size_t			key_sz;
+	t_s_rbtn		*anchor;
+	unsigned int	rmv_ticker;
 }			t_s_rbt;
 
 void
 	del_node(
 		t_s_rbtn *node);
 
+t_s_rbtn
+	*find_node(
+		void *key, t_rbt_ordering foo,
+		t_s_rbtn *at);
 void
 	rotate(
 		int left_or_not, t_s_rbtn *at);

@@ -75,6 +75,7 @@ int
 int
 	rbtn_remove_apply(
 		void *key, t_rbt_applyee foo, void *p_tree);
+
 int
 	rbtn_remove_retrieve(
 		void *key, t_rbt_applyee foo,
@@ -93,5 +94,6 @@ int
 # define RBT_SUCCESS 0
 # define RBT_BAD_ARG 1
 # define RBT_DUP_KEY 2
+# define RBT_KEY_NOT_FOUND 3
 
 #endif

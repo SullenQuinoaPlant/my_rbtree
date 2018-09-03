@@ -15,7 +15,7 @@ int
 		return (1);
 	if (!(alloc = malloc(sizeof(t_s_rbt))))
 		return (-1);
-	init = (t_s_rbt){foo, key_sz, 0};
+	init = (t_s_rbt){foo, key_sz, 0, 0};
 	*alloc = init;
 	*p_ret = (void*)alloc;
 	return (0);
