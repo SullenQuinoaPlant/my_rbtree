@@ -8,8 +8,8 @@ void
 	if (!node)
 		return;
 	free(node->key);
-	del_node(node->kinder[e_left]);
-	del_node(node->kinder[e_right]);
+	del_node(node->kin[e_left]);
+	del_node(node->kin[e_right]);
 	ft_cleanfree(node, sizeof(t_s_rbtn));
 }
 		
@@ -33,8 +33,8 @@ void
 		return;
 	free(node->key);
 	ft_cleanfree(node->datum, datum_sz);
-	del_node_free(node->kinder[e_left]);
-	del_node_free(node->kinder[e_right]);
+	del_node_free(node->kin[e_left]);
+	del_node_free(node->kin[e_right]);
 	ft_cleanfree(node, sizeof(t_s_rbtn));
 }
 		

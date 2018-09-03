@@ -15,8 +15,8 @@ int
 	i = -1;
 	while (!ret && (++i) < e_tecns_sz)
 	{
-		ret |= del_node(foo, node->kinder[i];
-		node->kinder[i] = 0;
+		ret |= del_node(foo, node->kin[i];
+		node->kin[i] = 0;
 	}
 	if (i == e_tecns_sz)
 	{

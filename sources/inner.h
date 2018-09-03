@@ -12,19 +12,24 @@ enum		e_color {
 	e_black
 }			t_e_col;
 
+/*node attribute flags:*/
+# define RED 0X01
+# define LEFT 0X02
+
 typedef
-enum		e_child_nodes {
+enum		e_kin_nodes {
+	e_parent,
 	e_left,
 	e_right,
-	e_tecns_sz
-}			t_e_cns;
+	e_tekns_sz
+}			t_e_kns;
 
 typedef
 struct		s_rbtree_node {
 	void		*key;
+	int			attributes;
+	t_s_rbtn	kin[e_tekns_sz];
 	void		*datum;
-	t_e_col		color;
-	t_s_rbtn	kinder[e_tecns_sz];
 }			t_s_rbtn;
 
 typedef

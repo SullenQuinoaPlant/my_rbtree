@@ -11,14 +11,14 @@ int
 	ret = 0;
 	if (!node)
 		return (0);
-	ret |= recurse(foo, node->kinder[e_left]);
+	ret |= recurse(foo, node->kin[e_right]);
+	ret |= recurse(foo, node->kin[e_left]);
 	ret |= foo(node->datum);
-	ret |= recurse(foo, node->kinder[e_right]);
 	return (ret);
 }
 	
 int
-	rbt_apply_inord(
+	rbt_apply_pstrevord(
 		t_applythis foo, void *p_tree)
 {
 	int		ret;
