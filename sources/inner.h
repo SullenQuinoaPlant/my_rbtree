@@ -29,7 +29,7 @@ typedef
 struct		s_rbtree_node {
 	void		*key;
 	int			attr;
-	t_s_rbtn	kin[e_tekns_sz];
+	t_s_rbtn	*kin[e_tekns_sz];
 	void		*datum;
 }			t_s_rbtn;
 
@@ -43,4 +43,17 @@ struct		s_red_black_tree {
 void
 	del_node(
 		t_s_rbtn *node);
+
+void
+	rotate(
+		int left_or_not, t_s_rbtn *at);
+
+void
+	rotate_left(
+		t_s_rbtn *at);
+
+void
+	rotate_right(
+		t_s_rbtn *at);
+
 #endif
