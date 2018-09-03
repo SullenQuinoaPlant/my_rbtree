@@ -11,6 +11,7 @@ enum		e_compare {
 }			t_e_comp;
 
 /*key comparison type*/
+/*compare first arg to second arg*/
 typedef
 t_e_comp
 	(*t_ordering)(
@@ -83,5 +84,11 @@ int
 int
 	rbtn_retrieve(
 		void *key, void *p_tree, void *ret_p_datum);
+
+/*return codes*/
+# define RBT_SYS_ERR -1
+# define RBT_SUCCESS 0
+# define RBT_BAD_ARG 1
+# define RBT_DUP_KEY 2
 
 #endif

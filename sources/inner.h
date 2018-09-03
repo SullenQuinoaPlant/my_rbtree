@@ -39,4 +39,7 @@ struct		s_red_black_tree {
 	t_s_rbtn	*anchor;
 }			t_s_rbt;
 
+void
+	del_node(
+		t_s_rbtn *node);
 #endif

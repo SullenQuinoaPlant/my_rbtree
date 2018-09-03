@@ -1,6 +1,5 @@
 #include "inner.h"
 
-static
 void
 	del_node(
 		t_s_rbtn *node)
