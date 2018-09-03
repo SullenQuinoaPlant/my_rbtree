@@ -73,6 +73,9 @@ int
 		void *key, void *p_tree);
 
 int
+	rbtn_remove_apply(
+		void *key, t_applythis foo, void *p_tree);
+int
 	rbtn_remove_retrieve(
 		void *key, t_applythis foo,
 		void *p_tree, void *ret_p_datum);
