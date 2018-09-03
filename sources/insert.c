@@ -12,9 +12,9 @@ int
 	if ((cmp = (*with)(this->key, (*in)->key)) == e_eq)
 		return (RBT_DUP_KEY);
 	else if (cmp == e_lt)
-		this->attributes |= LEFT;
+		this->attr |= LEFT;
 	else
-		this->attributes &= ~LEFT;
+		this->attr &= ~LEFT;
 	this->kin[e_parent] = *in;
 	return (insert(this, with, &in->kin[cmp == e_lt ? e_left : e_right]));
 }
@@ -33,7 +33,7 @@ int
 		(new->key = malloc(tree->key_sz)))
 	{
 		ft_memcpy(new->key, key, tree->key_sz);
-		new->attributes = RED;
+		new->attr = RED;
 		ft_bzero(new->kin, sizeof(new->kin));
 		new->datum = datum;
 		if (r = (insert(new, &tree->anchor) == RBT_DUP_KEY))

@@ -12,10 +12,6 @@ enum		e_color {
 	e_black
 }			t_e_col;
 
-/*node attribute flags:*/
-# define RED 0X01
-# define LEFT 0X02
-
 typedef
 enum		e_kin_nodes {
 	e_parent,
@@ -24,10 +20,15 @@ enum		e_kin_nodes {
 	e_tekns_sz
 }			t_e_kns;
 
+/*node attribute flags:*/
+/*used for (t_s_rbtn).attr*/
+# define RED 0X01
+# define LEFT 0X02
+
 typedef
 struct		s_rbtree_node {
 	void		*key;
-	int			attributes;
+	int			attr;
 	t_s_rbtn	kin[e_tekns_sz];
 	void		*datum;
 }			t_s_rbtn;
