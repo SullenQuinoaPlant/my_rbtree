@@ -3,7 +3,7 @@
 static
 int
 	insert(
-		t_s_rbtn *this, t_ordering with, t_s_rbtn **in)
+		t_s_rbtn *this, t_rbt_ordering with, t_s_rbtn **in)
 {
 	t_e_comp	cmp;
 

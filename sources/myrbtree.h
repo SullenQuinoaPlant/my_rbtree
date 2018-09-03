@@ -14,7 +14,7 @@ enum		e_compare {
 /*compare first arg to second arg*/
 typedef
 t_e_comp
-	(*t_ordering)(
+	(*t_rbt_ordering)(
 		*void, *void);
 
 typedef
@@ -61,7 +61,7 @@ void
 
 int
 	rbt_init(
-		t_ordering foo, size_t key_sz,
+		t_rbt_ordering foo, size_t key_sz,
 		void* *pp_tree);
 
 int

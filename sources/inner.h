@@ -35,7 +35,7 @@ struct		s_rbtree_node {
 
 typedef
 struct		s_red_black_tree {
-	t_ordering	order_foo;
+	t_rbt_ordering	order_foo;
 	size_t		key_sz;
 	t_s_rbtn	*anchor;
 }			t_s_rbt;

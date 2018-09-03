@@ -2,7 +2,7 @@
 
 int
 	rbt_init(
-		t_ordering foo, size_t key_sz,
+		t_rbt_ordering foo, size_t key_sz,
 		void **p_ret)
 {
 	t_s_rbt	init;
