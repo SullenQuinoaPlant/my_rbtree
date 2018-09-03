@@ -39,7 +39,7 @@ struct		s_red_black_tree {
 	t_rbt_ordering	order_foo;
 	size_t			key_sz;
 	t_s_rbtn		*anchor;
-	unsigned int	rmv_ticker;
+	unsigned int	ticker;
 }			t_s_rbt;
 
 void
@@ -50,6 +50,15 @@ t_s_rbtn
 	*find_node(
 		void *key, t_rbt_ordering foo,
 		t_s_rbtn *at);
+
+t_s_rbtn
+	*next_ino(
+		t_s_rbtn *from);
+
+t_s_rbtn
+	*prev_ino(
+		t_s_rbtn *from);
+
 void
 	rotate(
 		int left_or_not, t_s_rbtn *at);

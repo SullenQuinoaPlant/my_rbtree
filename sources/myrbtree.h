@@ -87,7 +87,7 @@ int
 
 int
 	rbtn_retrieve(
-		void *key, void *p_tree, void *ret_p_datum);
+		void *key, void *p_tree, void **ret_p_datum);
 
 /*return codes*/
 # define RBT_SYS_ERR -1
