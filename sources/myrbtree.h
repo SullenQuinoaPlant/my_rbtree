@@ -78,8 +78,7 @@ int
 
 int
 	rbtn_remove_retrieve(
-		void *key, t_rbt_applyee foo,
-		void *p_tree, void *ret_p_datum);
+		void *key, void *p_tree, void *ret_p_datum);
 
 int
 	rbtn_remove_free(

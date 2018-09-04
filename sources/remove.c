@@ -65,7 +65,7 @@ void
 }
 
 int
-	remove_a_node(
+	remove(
 		void *key, void *p_tree,
 		t_rbt_applyee foo, void **ret_p_datum)
 {

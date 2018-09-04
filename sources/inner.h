@@ -72,7 +72,7 @@ void
 		t_s_rbtn *removee);
 
 int
-	remove_a_node(
+	remove(
 		void *at_key, t_rbt_applyee foo,
 		void *p_tree, void **ret_p_datum);
 		
