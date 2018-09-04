@@ -10,6 +10,10 @@ AUX_TARGETS =\
 AUX_SRCS := $(patsubst %,$(AUX_DIR)/%.c,$(AUX_TARGETS))
 AUX_OBJS := $(patsubst %,$(AUX_DIR)/%.o,$(AUX_TARGETS))
 
+$(LIBS_L)/libaux.a : $(AUX_OBJS)
+	ar -rcs $@ $^
+	cp $(AUX_DIR)/auxilliaries.h $(LIBS_I)/libaux.h
+
 $(AUX_DIR)/%.o : $(AUX_DIR)/%.c
 	$(CC)\
 		$(CFLAGS_UTEST)\
