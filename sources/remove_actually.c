@@ -1,6 +1,5 @@
 #include "inner.h"
 
-static
 void
 	removal_rebalance(
 		t_s_rbtn *p0)

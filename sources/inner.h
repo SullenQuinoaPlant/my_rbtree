@@ -64,6 +64,10 @@ void
 		t_s_rbtn *focus, t_s_rbtn *red_parent);
 
 void
+	removal_rebalance(
+		t_s_rbtn *p0);
+
+void
 	remove_actually(
 		t_s_rbtn *removee);
 
