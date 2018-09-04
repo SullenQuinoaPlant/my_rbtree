@@ -60,6 +60,10 @@ t_s_rbtn
 		t_s_rbtn *from);
 
 void
+	rem_reb_red(
+		t_s_rbtn *focus, t_s_rbtn *red_parent);
+
+void
 	remove_actually(
 		t_s_rbtn *removee);
 
