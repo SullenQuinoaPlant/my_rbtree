@@ -4,7 +4,11 @@
 # include "inner.h"
 
 int
-	check_depth(
+	uniform_depth(
 		t_s_rbt *tree);
+
+int
+	int_order(
+		void *a, void *b);
 
 #endif

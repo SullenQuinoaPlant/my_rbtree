@@ -28,7 +28,7 @@ int
 }
 
 int
-	check_depth(
+	uniform_depth(
 		t_s_rbt *tree)
 {
 	int		depth;
