@@ -10,6 +10,9 @@ EXECUTION_STAMPS := $(TEST_OBJS:.o=.execution.stamp)
 CFLAGS_UTEST = -fno-builtin -g
 CFLAGS_UTEST += $(CFLAGS_MORE) #$(CFLAGS) were annoying the hell out of me
 
+AUX_DIR = auxilliaries
+include $(UTEST_DIR)/$(AUX_DIR)/Makefile
+
 
 
 ############
@@ -29,7 +32,7 @@ set_utest_flags :
 
 
 .PHONY : test_prerequisites
-test_prerequisites : cmocka
+test_prerequisites : cmocka libaux
 
 
 .PHONY : cmocka
@@ -58,7 +61,8 @@ $(LIBS_L)/$(LIBNAME).a
 		$<\
 		-L $(LIBS_L)\
 		-lcmocka\
-		-l$(NAME) -lmyfloatingpoint -lft\
+		-l$(NAME)\
+		-laux\
 		-o $@\
 		-Wl,-rpath=$$(readlink -e $(LIBS_L))\
 

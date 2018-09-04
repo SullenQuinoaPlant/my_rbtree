@@ -1,6 +1,6 @@
-NAME =
+NAME = myrbtree
 LIBNAME = lib$(NAME)
-GIT_REPO =
+GIT_REPO = https://github.com/SullenQuinoaPlant/my_rbtree.git
 
 CALL_DIR := $(shell pwd)
 SRC_DIR	:= $(ROOT)/sources
@@ -12,7 +12,7 @@ OUT_DIR_LIB := $(LIBS_L)
 OUT_DIR_H := $(LIBS_I)
 
 include $(SRC_DIR)/targets.mk
-DEPENDENCIES =
+DEPENDENCIES = libft
 
 CC := gcc
 CFLAGS_MORE =
