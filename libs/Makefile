@@ -11,7 +11,7 @@ build-dependencies : $(DEPENDENCIES)
 define BUILD_LIB
 	$(MAKE) -C $@/ 
 	cp $@/$@.a $(LIBS_L)
-	cp $@/$@.h $(LIBS_I)
+	cp $@/includes/$@.h $(LIBS_I)
 	rm -rf $@
 	touch $(LIB_DIR)/$@
 endef
@@ -19,7 +19,7 @@ endef
 libft :
 	git clone \
 		--single-branch \
-		-b the_lib https://github.com/SullenQuinoaPlant/Libft.git \
+		-b release https://github.com/SullenQuinoaPlant/Libft.git \
 		--depth 1 \
 		$@/
 	$(BUILD_LIB)
