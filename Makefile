@@ -5,33 +5,27 @@ def : targets
 
 ############
 #VARIABLES :
-
 ifndef ROOT
  ROOT := .
 endif
-
 include $(ROOT)/make_vars.mk
 
 
 #######
 #CORE :
-
 include $(ROOT)/core.mk
 
 
 ########################
 #TARGETS & DEPENDENCIES:
-
 include $(SRC_DIR)/Makefile
 
 #######
 #LIBS :
-
 include $(LIB_DIR)/Makefile
 
 ########
 #TESTS :
-	
 include $(UTEST_DIR)/Makefile
 
 
@@ -63,15 +57,3 @@ release :
 		git add * && \
 		git commit -m make_release && \
 		git push origin release
-	
-
-################
-#MISCELLANEOUS :
-
-.PHONY : gcp
-gcp :
-	git commit -a -m i; git push;
-
-.PHONY : grm
-grm :
-	git reset --hard && make CFLAGS_MORE=-g

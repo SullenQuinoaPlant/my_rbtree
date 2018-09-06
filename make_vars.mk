@@ -19,7 +19,7 @@ DEPENDENCIES = libft
 CC := gcc
 CFLAGS_MORE =
 ifndef CFLAGS
-	CFLAGS := -Wall -Wextra -Werror -I $(INC_DIR)
+	CFLAGS := -Wall -Wextra -Werror -I $(INC_DIR) -I $(LIBS_I)
 endif
 CFLAGS += $(CFLAGS_MORE)
 
