@@ -3,7 +3,8 @@ LIBNAME = lib$(NAME)
 GIT_REPO = https://github.com/SullenQuinoaPlant/my_rbtree.git
 
 CALL_DIR := $(shell pwd)
-SRC_DIR	:= $(ROOT)/sources
+SRC_DIR := $(ROOT)/sources
+INC_DIR := $(ROOT)/includes
 OBJ_DIR := $(ROOT)/objects
 LIB_DIR := $(ROOT)/libs
 LIBS_L := $(LIB_DIR)/objects
@@ -12,12 +13,13 @@ OUT_DIR_LIB := $(LIBS_L)
 OUT_DIR_H := $(LIBS_I)
 
 include $(SRC_DIR)/targets.mk
+
 DEPENDENCIES = libft
 
 CC := gcc
 CFLAGS_MORE =
 ifndef CFLAGS
-	CFLAGS := -Wall -Wextra -Werror
+	CFLAGS := -Wall -Wextra -Werror -I $(INC_DIR)
 endif
 CFLAGS += $(CFLAGS_MORE)
 
