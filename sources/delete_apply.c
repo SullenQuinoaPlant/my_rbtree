@@ -2,31 +2,31 @@
 
 static
 int
-	del_node(
+	recurse(
 		int (*foo)(void*),
 		t_s_rbtn *node)
 {
 	int		ret;
-	int		i;
 
 	ret = 0;
 	if (!node)
 		return (ret);
-	i = -1;
-	while (!ret && (++i) < e_tecns_sz)
-	{
-		ret |= del_node(foo, node->kin[i];
-		node->kin[i] = 0;
-	}
-	if (i == e_tecns_sz)
+	if (!(ret = recurse(foo, node->kin[e_left])))
+		node->kin[e_left] = 0;
+	if (!ret && !(ret = recurse(foo, node->kin[e_right])))
+		node->kin[e_right] = 0;
+	if (!ret)
+		ret = (*foo)(node->datum);
+	if (!ret)
 	{
 		free(node->key);
 		ft_cleanfree(node, sizeof(t_s_rbtn));
 	}
+	return (ret);
 }
 		
 int
-	rbt_delete_apply_ino(
+	rbt_delete_apply_postord(
 		int (*foo)(void*),
 		void	**p_tree)
 {
@@ -34,7 +34,7 @@ int
 	int		ret;
 
 	ret = 0;
-	if (!(ret |= del_node(foo, tree->anchor)))
+	if (!(ret |= recurse(foo, tree->anchor)))
 	{
 		ft_cleanfree(tree, sizeof(t_s_rbt));
 		*p_tree = 0;

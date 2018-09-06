@@ -26,7 +26,7 @@ enum									e_compare {
 **key comparison type
 **compare first arg to second arg
 */
-typede ft_e_comp						(*t_rbt_ordering)(
+typedef t_e_comp						(*t_rbt_ordering)(
 	void*, void*);
 
 typedef int								(*const t_rbt_applyee)(
@@ -62,7 +62,7 @@ int										rbt_apply_revord(
 void									rbt_delete(
 	void			**p_tree);	
 
-int										rbt_delete_apply_ino(
+int										rbt_delete_apply_postord(
 	t_rbt_applyee	foo,
 	void			**p_tree);
 

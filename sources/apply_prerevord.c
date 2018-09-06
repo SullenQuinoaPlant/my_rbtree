@@ -6,7 +6,6 @@ int
 		t_rbt_applyee foo, t_s_rbtn *node)
 {
 	int		ret;
-	int		i;
 
 	ret = 0;
 	if (!node)
