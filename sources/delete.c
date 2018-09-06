@@ -18,7 +18,7 @@ void
 {
 	t_s_rbt * const tree = (t_s_rbt*)*p_tree;
 
-	del_node(tree->anchor);
+	del_node(tree->key_sz, tree->anchor);
 	ft_cleanfree(tree, sizeof(t_s_rbt));
 	*p_tree = 0;
 }

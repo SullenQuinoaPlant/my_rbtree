@@ -57,13 +57,16 @@ struct							s_red_black_tree {
 };
 
 void							del_node(
-	size_t		key_sz;
+	size_t		key_sz,
 	t_s_rbtn	*node);
 
 t_s_rbtn						*find_node(
 	void			*key,
 	t_rbt_ordering	foo,
 	t_s_rbtn		*at);
+
+void							insert_rebalance(
+	t_s_rbtn	*new);
 
 t_s_rbtn						*next_ino(
 	t_s_rbtn	*from);
