@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   apply_inord.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/06 06:34:10 by nmauvari          #+#    #+#             */
+/*   Updated: 2018/09/06 06:35:45 by nmauvari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "inner.h"
 
 static
 int
-	recurse(
-		t_rbt_applyee foo, t_s_rbtn *node)
+recurse(
+	t_rbt_applyee foo, t_s_rbtn *node)
 {
 	int		ret;
 	int		i;
