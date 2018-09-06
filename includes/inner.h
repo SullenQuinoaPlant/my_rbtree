@@ -57,40 +57,43 @@ struct							s_red_black_tree {
 };
 
 void							del_node(
-	t_s_rbtn *node);
+	size_t		key_sz;
+	t_s_rbtn	*node);
 
 t_s_rbtn						*find_node(
-	void *key,
-	t_rbt_ordering foo,
-	t_s_rbtn *at);
+	void			*key,
+	t_rbt_ordering	foo,
+	t_s_rbtn		*at);
 
 t_s_rbtn						*next_ino(
-	t_s_rbtn *from);
+	t_s_rbtn	*from);
 
 t_s_rbtn						*prev_ino(
-	t_s_rbtn *from);
+	t_s_rbtn	*from);
 
 void							rem_reb_red(
-	t_s_rbtn *focus,
-	t_s_rbtn *red_parent);
+	t_s_rbtn	*focus,
+	t_s_rbtn	*red_parent);
 
 void							removal_rebalance(
-	t_s_rbtn *p0);
+	t_s_rbtn	*p0);
 
 void							remove_actually(
-	t_s_rbtn *removee);
+	t_s_rbtn	*removee);
 
 int								remove(
-	void *at_key, t_rbt_applyee foo,
-	void *p_tree, void **ret_p_datum);
+	void			*at_key,
+	t_rbt_applyee	foo,
+	void			*p_tree,
+	void			**ret_p_datum);
 
 void							rotate(
-	int left_or_not, t_s_rbtn *at);
+	int	left_or_not, t_s_rbtn *at);
 
 void							rotate_left(
-	t_s_rbtn *at);
+	t_s_rbtn	*at);
 
 void							rotate_right(
-	t_s_rbtn *at);
+	t_s_rbtn	*at);
 
 #endif
