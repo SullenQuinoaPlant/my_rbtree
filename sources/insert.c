@@ -6,9 +6,14 @@ int
 		t_s_rbtn *this, t_rbt_ordering with, t_s_rbtn **in)
 {
 	t_e_comp	cmp;
+	int			r;
 
 	if (!*in)
-		return (insert_rebalance((*in = this)));
+	{
+		*in = this;
+		insert_rebalance(this);
+		return (RBT_SUCCESS);
+	}
 	if ((cmp = (*with)(this->key, (*in)->key)) == e_eq)
 		return (RBT_DUP_KEY);
 	else if (cmp == e_lt)
@@ -16,7 +21,8 @@ int
 	else
 		this->attr &= ~LEFT;
 	this->kin[e_parent] = *in;
-	return (insert(this, with, &in->kin[cmp == e_lt ? e_left : e_right]));
+	r = insert(this, with, &((*in)->kin[cmp == e_lt ? e_left : e_right]));
+	return (r);
 }
 
 int
@@ -36,8 +42,8 @@ int
 		new->attr = RED;
 		ft_bzero(new->kin, sizeof(new->kin));
 		new->datum = datum;
-		if (r = (insert(new, &tree->anchor) == RBT_DUP_KEY))
-			del_node(new);
+		if ((r = (insert(new, tree->order, &tree->anchor) == RBT_DUP_KEY)))
+			del_node(tree->key_sz, new);
 		return (r);
 	}
 	else if (new)

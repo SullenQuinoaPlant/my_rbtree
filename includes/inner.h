@@ -50,12 +50,15 @@ struct							s_rbtree_node {
 
 typedef struct s_red_black_tree	t_s_rbt;
 struct							s_red_black_tree {
-	t_rbt_ordering	order_foo;
+	t_rbt_ordering	order;
 	size_t			key_sz;
 	t_s_rbtn		*anchor;
 	unsigned int	ticker;
 };
 
+/*
+**FUNCTIONS
+*/
 void							del_node(
 	size_t		key_sz,
 	t_s_rbtn	*node);
@@ -81,17 +84,18 @@ void							rem_reb_red(
 void							removal_rebalance(
 	t_s_rbtn	*p0);
 
-void							remove_actually(
-	t_s_rbtn	*removee);
-
 int								remove(
 	void			*at_key,
 	t_rbt_applyee	foo,
 	void			*p_tree,
 	void			**ret_p_datum);
 
+void							remove_actually(
+	t_s_rbtn	*removee);
+
 void							rotate(
-	int	left_or_not, t_s_rbtn *at);
+	int			left_or_not,
+	t_s_rbtn	*at);
 
 void							rotate_left(
 	t_s_rbtn	*at);

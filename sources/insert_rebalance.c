@@ -1,21 +1,28 @@
 #include "inner.h"
 
-static
-void
-	red_uncle(
-		t_s_rbtn parent, t_s_rbtn grandpa, t_s_rbtn uncle)
+/*
+**p0 : current node
+**p1 : father
+**p2 : grandfather
+**p3 : uncle
+*/
+
+static void					red_uncle(
+	t_s_rbtn *p1,
+	t_s_rbtn *p2,
+	t_s_rbtn *p3)
 {
-	uncle->attr &= ~RED;
-	grandpa->attr |= RED;
-	parent->attr &= ~RED;
-	insert_rebalance(grandpa);
+	p3->attr &= ~RED;
+	p2->attr |= RED;
+	p1->attr &= ~RED;
+	insert_rebalance(p2);
 }
 
-static
-void
-	black_uncle(
-		t_s_rbtn p0, t_s_rbtn p1,
-		t_s_rbtn p2, t_s_rbtn p3)
+static void					black_uncle(
+	t_s_rbtn *p0,
+	t_s_rbtn *p1,
+	t_s_rbtn *p2,
+	t_s_rbtn *p3)
 {
 	if ((p0->attr & LEFT) ^ (p1->attr & LEFT))
 	{
