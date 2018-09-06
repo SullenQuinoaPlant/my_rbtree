@@ -1,3 +1,4 @@
+TARGETS := \
 	apply_inord \
 	apply_postord \
 	apply_postrevord \
