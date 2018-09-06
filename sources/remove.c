@@ -1,9 +1,7 @@
 #include "inner.h"
 
-static
-t_s_rbtn
-	*greater(
-		t_s_rbtn *of)
+static t_s_rbtn				*greater(
+	t_s_rbtn	*of)
 {
 	t_s_rbtn	*ret;
 
@@ -57,8 +55,8 @@ static void				swap(
 
 int						remove(
 	void			*key,
-	void			*p_tree,
 	t_rbt_applyee	foo,
+	void			*p_tree,
 	void			**ret_p_datum)
 {
 	t_s_rbt * const	tree = (t_s_rbt*)p_tree;
@@ -66,9 +64,9 @@ int						remove(
 	t_s_rbtn		*rnode;
 	int				r;
 
-	if (!(node = find_node(key, tree->order_foo, tree->anchor)))
+	if (!(node = find_node(key, tree->order, tree->anchor)))
 		return (RBT_KEY_NOT_FOUND);
-	rnode = get_replacement(node);
+	rnode = get_replacement(node, tree);
 	r = RBT_SUCCESS;
 	if (foo)
 		r = (*foo)(node->datum);
