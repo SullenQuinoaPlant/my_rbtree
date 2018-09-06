@@ -11,9 +11,11 @@ void
 	at->attr |= LEFT;
 	at->kin[e_parent] = at->kin[e_right];
 	p = tmp.kin[e_right]->kin[e_left];
-	at->kin[e_right] = p;
-	p->kin[e_parent] = at;
-	p->attr &= ~LEFT;
+	if ((at->kin[e_right] = p))
+	{
+		p->kin[e_parent] = at;
+		p->attr &= ~LEFT;
+	}
 	p = tmp.kin[e_right];
 	p->kin[e_parent] = tmp.kin[e_parent];
 	p->kin[e_left] = at;
@@ -32,9 +34,11 @@ void
 	at->attr &= ~LEFT;
 	at->kin[e_parent] = at->kin[e_left];
 	p = tmp.kin[e_left]->kin[e_right];
-	at->kin[e_left] = p;
-	p->kin[e_parent] = at;
-	p->attr |= LEFT;
+	if ((at->kin[e_left] = p))
+	{
+		p->kin[e_parent] = at;
+		p->attr |= LEFT;
+	}
 	p = tmp.kin[e_left];
 	p->kin[e_parent] = tmp.kin[e_parent];
 	p->kin[e_right] = at;

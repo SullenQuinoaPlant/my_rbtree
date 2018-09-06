@@ -2,12 +2,12 @@
 
 static
 t_s_rbtn
-	*next(
-		t_s_rbtn *for)
+	*greater(
+		t_s_rbtn *of)
 {
 	t_s_rbtn	*ret;
 
-	if ((ret = next_ino(for))->kin[e_right])
+	if ((ret = next_ino(of))->kin[e_right])
 	{
 		rotate_left(ret);
 		ret->attr |= RED;
@@ -16,58 +16,50 @@ t_s_rbtn
 	return (ret);
 }
 
-static
-t_s_rbtn
-	*previous(
-		t_s_rbtn *for)
+static t_s_rbtn				*lesser(
+	t_s_rbtn	*of)
 {
 	t_s_rbtn	*ret;
 
-	if ((ret = next_ino(for))->kin[e_right])
+	if ((ret = prev_ino(of))->kin[e_left])
 	{
-		rotate_left(ret);
+		rotate_right(ret);
 		ret->attr |= RED;
 		ret->kin[e_parent]->attr &= ~RED;
 	}
 	return (ret);
 }
 
-static
-t_s_rbtn
-	*get_replacement(
-		t_s_rbtn *for, t_s_rbt *tree)
+static t_s_rbtn				*get_replacement(
+	t_s_rbtn	*of,
+	t_s_rbt		*tree)
 {
 	t_s_rbtn	*ret;
 
-	ret = 0;
-	if (for->kin[e_left] == 0)
-		ret = for->kin[e_right];
-	else if (for->kin[e_right] == 0)
-		ret = for->kin[e_left];
-	else if (tree->ticker++ & 0x1)
-		ret = next(for);
+	if (tree->ticker++ & 0x1)
+		ret = greater(of);
 	else
-		ret = previous(for);
+		ret = lesser(of);
 	return (ret);
 }
 
-static
-void
-	swap(
-		t_s_rbtn *this, t_s_rbtn *forthis,
-		size_t key_sz)
+static void				swap(
+	t_s_rbtn	*this,
+	t_s_rbtn	*forthis,
+	size_t		key_sz)
 {
-	t_s_rbtn	*p;
-
+	if (this == forthis)
+		return;
 	ft_cleanfree(this->key, key_sz);
 	this->key = forthis->key;
 	this->datum = forthis->datum;
 }
 
-int
-	remove(
-		void *key, void *p_tree,
-		t_rbt_applyee foo, void **ret_p_datum)
+int						remove(
+	void			*key,
+	void			*p_tree,
+	t_rbt_applyee	foo,
+	void			**ret_p_datum)
 {
 	t_s_rbt * const	tree = (t_s_rbt*)p_tree;
 	t_s_rbtn		*node;
@@ -83,6 +75,6 @@ int
 	if (ret_p_datum)
 		*ret_p_datum = node->datum;
 	swap(node, rnode, tree->key_sz);
-	remove_actually(rnode);
+	remove_actually(rnode, tree->key_sz);
 	return (r);
 }

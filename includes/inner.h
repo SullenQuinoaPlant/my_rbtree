@@ -65,7 +65,7 @@ void							del_node(
 
 t_s_rbtn						*find_node(
 	void			*key,
-	t_rbt_ordering	foo,
+	t_rbt_ordering	order,
 	t_s_rbtn		*at);
 
 void							insert_rebalance(
@@ -77,12 +77,16 @@ t_s_rbtn						*next_ino(
 t_s_rbtn						*prev_ino(
 	t_s_rbtn	*from);
 
+void							rem_reb_black(
+	t_s_rbtn	*child,
+	t_s_rbtn	*black_father);
+
 void							rem_reb_red(
-	t_s_rbtn	*focus,
-	t_s_rbtn	*red_parent);
+	t_s_rbtn	*child,
+	t_s_rbtn	*red_father);
 
 void							removal_rebalance(
-	t_s_rbtn	*p0);
+	t_s_rbtn	*child);
 
 int								remove(
 	void			*at_key,
@@ -91,7 +95,8 @@ int								remove(
 	void			**ret_p_datum);
 
 void							remove_actually(
-	t_s_rbtn	*removee);
+	t_s_rbtn	*removee,
+	size_t		key_sz);
 
 void							rotate(
 	int			left_or_not,
