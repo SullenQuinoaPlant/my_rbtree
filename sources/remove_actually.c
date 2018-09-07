@@ -1,17 +1,5 @@
 #include "inner.h"
 
-void					removal_rebalance(
-	t_s_rbtn	*p0)
-{
-	t_s_rbtn	*p1;
-
-	p1 = p0->kin[e_parent];
-	if (p1->attr & RED)
-		rem_reb_red(p0, p1);
-	else
-		rem_reb_black(p0, p1);
-}
-
 void					remove_actually(
 	t_s_rbtn	*p0,
 	size_t		key_sz)

@@ -43,7 +43,8 @@ static void			red_sibling(
 
 void				rem_reb_black(
 	t_s_rbtn	*p0,
-	t_s_rbtn	*p1)
+	t_s_rbtn	*p1,
+	int			left)
 {
 	t_s_rbtn	*p2;
 	t_s_rbtn	*p3;
@@ -52,10 +53,10 @@ void				rem_reb_black(
 	p2 = p1->kin[left ? e_right : e_left];
 	if (p2->attr & RED)
 		red_sibling(p0, p1, p2, left);
-	else if ((p3 = p2->kin[left ? e_right : e_left) &&
+	else if ((p3 = p2->kin[left ? e_right : e_left]) &&
 		p3->attr & RED)
 		outer_red_nephew(p1, p3, left);
-	else if ((p3 = p2->kin[left ? e_left : e_right) &&
+	else if ((p3 = p2->kin[left ? e_left : e_right]) &&
 		p3->attr & RED)
 		inner_red_nephew(p1, p2, p3, left);
 	else

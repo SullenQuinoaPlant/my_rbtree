@@ -77,16 +77,18 @@ t_s_rbtn						*next_ino(
 t_s_rbtn						*prev_ino(
 	t_s_rbtn	*from);
 
-void							rem_reb_black(
+t_s_rbtn						*rem_reb_black(
 	t_s_rbtn	*child,
-	t_s_rbtn	*black_father);
+	t_s_rbtn	*black_father
+	int			left_child);
 
-void							rem_reb_red(
+t_s_rbtn						*rem_reb_red(
 	t_s_rbtn	*child,
-	t_s_rbtn	*red_father);
+	t_s_rbtn	*red_father
+	int			left_child);
 
 void							removal_rebalance(
-	t_s_rbtn	*child);
+	t_s_rbtn	*weighted_child);
 
 int								remove(
 	void			*at_key,

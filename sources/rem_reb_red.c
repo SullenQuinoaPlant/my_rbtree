@@ -1,19 +1,20 @@
 #include "inner.h"
 
-static
-void
-	no_red(
-		t_s_rbtn *p1, t_s_rbtn *p2)
+
+static void			no_red(
+	t_s_rbtn	*p1,
+	t_s_rbtn	*p2)
 {
 	p2->attr |= RED;
 	p1->attr &= ~RED;
 }
 
-static
-void
-	outer_red(
-		t_s_rbtn *p1, t_s_rbtn *p2,
-		t_s_rbtn *p3, int left)
+
+static void			outer_red(
+	t_s_rbtn	*p1,
+	t_s_rbtn	*p2,
+	t_s_rbtn	*p3,
+	int			left)
 {
 	p1->attr &= ~RED;
 	p2->attr |= RED;
@@ -21,20 +22,20 @@ void
 	rotate(left, p1);
 }
 
-static
-void
-	inner_red(
-		t_s_rbtn *p1, t_s_rbtn *p2,
-		int left)
+static void			inner_red(
+	t_s_rbtn	*p1,
+	t_s_rbtn	*p2,
+	int			left)
 {
 	p1->attr &= ~RED;
 	rotate(!left, p2);
 	rotate(left, p1);
 }
 
-void
-	rem_reb_red(
-		t_s_rbtn *p0, t_s_rbtn *p1)
+void				rem_reb_red(
+	t_s_rbtn	*p0,
+	t_s_rbtn	*p1,
+	int			left)
 {
 	t_s_rbtn	*p2;
 	t_s_rbtn	*p3;
