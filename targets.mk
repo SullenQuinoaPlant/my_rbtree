@@ -14,8 +14,8 @@ TARGETS := \
 	removal_rebalance \
 	removal_rebalance_blackparent \
 	removal_rebalance_redparent \
-	remove \
-	remove_actually \
+	remove1 \
+	remove2 \
 	retrieve \
 	rotate \
 	search

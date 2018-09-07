@@ -6,7 +6,7 @@
 /*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/06 06:36:09 by nmauvari          #+#    #+#             */
-/*   Updated: 2018/09/06 07:01:42 by nmauvari         ###   ########.fr       */
+/*   Updated: 2018/09/07 08:10:18 by nmauvari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ enum									e_compare {
 typedef t_e_comp						(*t_rbt_ordering)(
 	void*, void*);
 
-typedef int								(*const t_rbt_applyee)(
+typedef int								(*t_rbt_applyee)(
 	void*);
 
 /*
@@ -60,7 +60,7 @@ int										rbt_apply_revord(
 	void			*p_tree);
 
 void									rbt_delete(
-	void			**p_tree);	
+	void			**p_tree);
 
 int										rbt_delete_apply_postord(
 	t_rbt_applyee	foo,
@@ -73,7 +73,7 @@ void									rbt_delete_free(
 int										rbt_init(
 	t_rbt_ordering	foo,
 	size_t			key_sz,
-	void*			*pp_tree);
+	void			**pp_tree);
 
 int										rbtn_insert(
 	void			*datum,
