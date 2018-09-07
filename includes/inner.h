@@ -82,8 +82,7 @@ t_s_rbtn						*rem_reb_black(
 	t_s_rbtn	*black_father
 	int			left_child);
 
-t_s_rbtn						*rem_reb_red(
-	t_s_rbtn	*child,
+void							rem_reb_red(
 	t_s_rbtn	*red_father
 	int			left_child);
 
