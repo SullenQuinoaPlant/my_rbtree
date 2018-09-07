@@ -5,16 +5,17 @@ TARGETS := \
 	apply_preord \
 	apply_prerevord \
 	apply_revord \
-	delete_apply \
 	delete \
+	delete_apply \
 	init \
 	insert \
 	insert_rebalance \
 	rbtn_remove \
-	remove_actually \
+	removal_rebalance \
+	removal_rebalance_blackparent \
+	removal_rebalance_redparent \
 	remove \
-	rem_reb_black \
-	rem_reb_red \
+	remove_actually \
 	retrieve \
 	rotate \
 	search

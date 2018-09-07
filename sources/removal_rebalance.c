@@ -8,7 +8,7 @@ void					removal_rebalance(
 	t_s_rbtn	*p3;
 	int			left;
 
-	while ((p1 = po->kin[e_parent]))
+	while ((p1 = p0->kin[e_parent]))
 	{
 		left = p0->attr & LEFT;
 		p2 = p1->kin[left ? e_right : e_left];

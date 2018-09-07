@@ -6,7 +6,7 @@
 /*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/06 06:25:01 by nmauvari          #+#    #+#             */
-/*   Updated: 2018/09/07 07:04:46 by nmauvari         ###   ########.fr       */
+/*   Updated: 2018/09/07 07:12:51 by nmauvari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ t_s_rbtn						*next_ino(
 t_s_rbtn						*prev_ino(
 	t_s_rbtn	*from);
 
-t_s_rbtn						*rem_reb_black(
+t_s_rbtn						*rem_reb_blk(
 	t_s_rbtn	*weighted_node,
 	t_s_rbtn	*black_father,
 	t_s_rbtn	*brother,

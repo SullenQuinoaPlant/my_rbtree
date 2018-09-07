@@ -45,7 +45,7 @@ static void			*red_sibling(
 	rotate(left, p1);
 }
 
-t_s_rbtn			*rem_reb_black(
+t_s_rbtn			*rem_reb_blk(
 	t_s_rbtn	*p0,
 	t_s_rbtn	*p1,
 	t_s_rbtn	*p2,
