@@ -21,6 +21,7 @@ t_s_rbtn		*next_ino(
 	t_s_rbtn	*p;
 	t_s_rbtn	*nxt;
 
+	p = from;
 	if ((nxt = from->kin[e_right]))
 	{
 		p = nxt;
@@ -36,6 +37,7 @@ t_s_rbtn		*prev_ino(
 	t_s_rbtn	*p;
 	t_s_rbtn	*nxt;
 
+	p = from;
 	if ((nxt = from->kin[e_left]))
 	{
 		p = nxt;

@@ -8,7 +8,6 @@
 */
 
 static void			no_red(
-	t_s_rbtn	*p1,
 	t_s_rbtn	*p2)
 {
 	p2->attr |= RED;
@@ -34,8 +33,7 @@ static void			outer_red_nephew(
 	rotate(left, p1);
 }
 
-static void			*red_sibling(
-	t_s_rbtn	*p0,
+static void			red_sibling(
 	t_s_rbtn	*p1,
 	t_s_rbtn	*p2,
 	int			left)
@@ -55,7 +53,7 @@ t_s_rbtn			*rem_reb_blk(
 
 	if (p2->attr & RED)
 	{
-		red_sibling(p0, p1, p2, left);
+		red_sibling(p1, p2, left);
 		return (p0);
 	}
 	else if ((p3 = p2->kin[left ? e_right : e_left]) &&
@@ -66,7 +64,7 @@ t_s_rbtn			*rem_reb_blk(
 		inner_red_nephew(p1, p2, p3, left);
 	else
 	{
-		no_red(p1, p2);
+		no_red(p2);
 		return (p1);
 	}
 	return (0);

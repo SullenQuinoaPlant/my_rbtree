@@ -5,7 +5,6 @@ void					removal_rebalance(
 {
 	t_s_rbtn	*p1;
 	t_s_rbtn	*p2;
-	t_s_rbtn	*p3;
 	int			left;
 
 	while ((p1 = p0->kin[e_parent]))
@@ -18,6 +17,6 @@ void					removal_rebalance(
 			break;
 		}
 		else
-			p0 = rem_reb_blk(p1, p2, left);
+			p0 = rem_reb_blk(p0, p1, p2, left);
 	}
 }
