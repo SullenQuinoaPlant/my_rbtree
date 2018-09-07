@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/07 07:37:36 by nmauvari          #+#    #+#             */
+/*   Updated: 2018/09/07 07:39:42 by nmauvari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "inner.h"
 
-void
-	rotate_left(
-		t_s_rbtn *at)
+void	rotate_left(
+	t_s_rbtn *at)
 {
 	t_s_rbtn	tmp;
 	t_s_rbtn	*p;
@@ -23,9 +34,8 @@ void
 	p->attr |= (tmp.attr & LEFT);
 }
 
-void
-	rotate_right(
-		t_s_rbtn *at)
+void	rotate_right(
+	t_s_rbtn *at)
 {
 	t_s_rbtn	tmp;
 	t_s_rbtn	*p;
@@ -46,9 +56,9 @@ void
 	p->attr |= (tmp.attr & LEFT);
 }
 
-void
-	rotate(
-		int left, t_s_rbtn *at)
+void	rotate(
+	int left,
+	t_s_rbtn *at)
 {
 	if (left)
 		rotate_left(at);

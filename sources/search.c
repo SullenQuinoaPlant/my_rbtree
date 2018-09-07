@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   search.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/07 07:35:30 by nmauvari          #+#    #+#             */
+/*   Updated: 2018/09/07 07:37:25 by nmauvari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "inner.h"
 
 t_s_rbtn		*find_node(
-	void			*key,
-	t_rbt_ordering	foo,
-	t_s_rbtn		*at)
+	void *key,
+	t_rbt_ordering foo,
+	t_s_rbtn *at)
 {
 	t_e_comp	cp;
 
@@ -16,7 +28,7 @@ t_s_rbtn		*find_node(
 }
 
 t_s_rbtn		*next_ino(
-	t_s_rbtn	*from)
+	t_s_rbtn *from)
 {
 	t_s_rbtn	*p;
 	t_s_rbtn	*nxt;
@@ -32,7 +44,7 @@ t_s_rbtn		*next_ino(
 }
 
 t_s_rbtn		*prev_ino(
-	t_s_rbtn	*from)
+	t_s_rbtn *from)
 {
 	t_s_rbtn	*p;
 	t_s_rbtn	*nxt;

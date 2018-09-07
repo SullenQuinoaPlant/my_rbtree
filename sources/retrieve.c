@@ -6,16 +6,16 @@
 /*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 07:16:51 by nmauvari          #+#    #+#             */
-/*   Updated: 2018/09/07 07:18:36 by nmauvari         ###   ########.fr       */
+/*   Updated: 2018/09/07 07:40:15 by nmauvari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inner.h"
 
 int		rbtn_retrieve(
-	void	*key,
-	void	*p_tree,
-	void	**ret_p_datum)
+	void *key,
+	void *p_tree,
+	void **ret_p_datum)
 {
 	t_s_rbt * const	tree = (t_s_rbt*)p_tree;
 	t_s_rbtn		*p;
