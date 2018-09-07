@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   apply_postord.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/07 07:29:16 by nmauvari          #+#    #+#             */
+/*   Updated: 2018/09/07 07:31:29 by nmauvari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "inner.h"
 
-static
-int
-	recurse(
-		t_rbt_applyee foo, t_s_rbtn *node)
+static int				recurse(
+	t_rbt_applyee foo,
+	t_s_rbtn *node)
 {
 	int		ret;
 
@@ -15,10 +26,10 @@ int
 	ret |= foo(node->datum);
 	return (ret);
 }
-	
-int
-	rbt_apply_pstord(
-		t_rbt_applyee foo, void *p_tree)
+
+int						rbt_apply_pstord(
+	t_rbt_applyee foo,
+	void *p_tree)
 {
 	int		ret;
 

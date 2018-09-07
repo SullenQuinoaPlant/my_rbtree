@@ -6,16 +6,15 @@
 /*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/06 06:34:10 by nmauvari          #+#    #+#             */
-/*   Updated: 2018/09/06 06:35:45 by nmauvari         ###   ########.fr       */
+/*   Updated: 2018/09/07 07:28:25 by nmauvari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inner.h"
 
-static
-int
-recurse(
-	t_rbt_applyee foo, t_s_rbtn *node)
+static int						recurse(
+	t_rbt_applyee foo,
+	t_s_rbtn *node)
 {
 	int		ret;
 
@@ -27,10 +26,10 @@ recurse(
 	ret |= recurse(foo, node->kin[e_right]);
 	return (ret);
 }
-	
-int
-	rbt_apply_inord(
-		t_rbt_applyee foo, void *p_tree)
+
+int								rbt_apply_inord(
+	t_rbt_applyee foo,
+	void *p_tree)
 {
 	int		ret;
 
