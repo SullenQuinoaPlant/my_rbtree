@@ -6,7 +6,7 @@
 /*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 07:35:30 by nmauvari          #+#    #+#             */
-/*   Updated: 2018/09/07 07:37:25 by nmauvari         ###   ########.fr       */
+/*   Updated: 2018/09/07 07:45:01 by nmauvari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_s_rbtn		*find_node(
 
 	while (at)
 		if ((cp = (*foo)(key, at->key)) == e_eq)
-			break;
+			break ;
 		else
 			at = at->kin[cp == e_lt ? e_left : e_right];
 	return (at);

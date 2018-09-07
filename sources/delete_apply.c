@@ -1,10 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   delete_apply.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/07 07:55:42 by nmauvari          #+#    #+#             */
+/*   Updated: 2018/09/07 07:57:55 by nmauvari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "inner.h"
 
-static
-int
-	recurse(
-		int (*foo)(void*),
-		t_s_rbtn *node)
+static int			recurse(
+	int (*foo)(void*),
+	t_s_rbtn *node)
 {
 	int		ret;
 
@@ -24,14 +34,13 @@ int
 	}
 	return (ret);
 }
-		
-int
-	rbt_delete_apply_postord(
-		int (*foo)(void*),
-		void	**p_tree)
+
+int					rbt_delete_apply_postord(
+	int (*foo)(void*),
+	void **p_tree)
 {
-	t_s_rbt	* const tree = (t_s_rbt*)*p_tree;
-	int		ret;
+	t_s_rbt *const	tree = (t_s_rbt*)*p_tree;
+	int				ret;
 
 	ret = 0;
 	if (!(ret |= recurse(foo, tree->anchor)))

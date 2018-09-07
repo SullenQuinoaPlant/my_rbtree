@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   insert.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/07 07:59:46 by nmauvari          #+#    #+#             */
+/*   Updated: 2018/09/07 08:06:36 by nmauvari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "inner.h"
 
-static
-int
-	insert(
-		t_s_rbtn *this, t_rbt_ordering with, t_s_rbtn **in)
+static int					insert(
+	t_s_rbtn *this,
+	t_rbt_ordering with,
+	t_s_rbtn **in)
 {
 	t_e_comp	cmp;
 	int			r;
@@ -25,11 +37,12 @@ int
 	return (r);
 }
 
-int
-	rbtn_insert(
-		void *datum, void *key, void *p_tree)
+int							rbtn_insert(
+	void *datum,
+	void *key,
+	void *p_tree)
 {
-	t_s_rbt * const	tree = (t_s_rbt*)p_tree;
+	t_s_rbt *const	tree = (t_s_rbt*)p_tree;
 	t_s_rbtn		*new;
 	int				r;
 

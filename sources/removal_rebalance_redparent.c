@@ -1,20 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   removal_rebalance_redparent.c                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/07 07:49:08 by nmauvari          #+#    #+#             */
+/*   Updated: 2018/09/07 07:57:08 by nmauvari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "inner.h"
 
-
 static void			no_red(
-	t_s_rbtn	*p1,
-	t_s_rbtn	*p2)
+	t_s_rbtn *p1,
+	t_s_rbtn *p2)
 {
 	p2->attr |= RED;
 	p1->attr &= ~RED;
 }
 
-
 static void			outer_red_nephew(
-	t_s_rbtn	*p1,
-	t_s_rbtn	*p2,
-	t_s_rbtn	*p3,
-	int			left)
+	t_s_rbtn *p1,
+	t_s_rbtn *p2,
+	t_s_rbtn *p3,
+	int left)
 {
 	p1->attr &= ~RED;
 	p2->attr |= RED;
@@ -23,9 +33,9 @@ static void			outer_red_nephew(
 }
 
 static void			inner_red_nephew(
-	t_s_rbtn	*p1,
-	t_s_rbtn	*p2,
-	int			left)
+	t_s_rbtn *p1,
+	t_s_rbtn *p2,
+	int left)
 {
 	p1->attr &= ~RED;
 	rotate(!left, p2);
@@ -33,9 +43,9 @@ static void			inner_red_nephew(
 }
 
 void				rem_reb_red(
-	t_s_rbtn	*p1,
-	t_s_rbtn	*p2,
-	int			left)
+	t_s_rbtn *p1,
+	t_s_rbtn *p2,
+	int left)
 {
 	t_s_rbtn	*p3;
 

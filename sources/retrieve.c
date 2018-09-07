@@ -6,7 +6,7 @@
 /*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 07:16:51 by nmauvari          #+#    #+#             */
-/*   Updated: 2018/09/07 07:40:15 by nmauvari         ###   ########.fr       */
+/*   Updated: 2018/09/07 07:45:12 by nmauvari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		rbtn_retrieve(
 	void *p_tree,
 	void **ret_p_datum)
 {
-	t_s_rbt * const	tree = (t_s_rbt*)p_tree;
+	t_s_rbt *const	tree = (t_s_rbt*)p_tree;
 	t_s_rbtn		*p;
 
 	if (ret_p_datum)

@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   remove.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/07 07:44:27 by nmauvari          #+#    #+#             */
+/*   Updated: 2018/09/07 07:44:28 by nmauvari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "inner.h"
 
 static t_s_rbtn				*greater(
-	t_s_rbtn	*of)
+	t_s_rbtn *of)
 {
 	t_s_rbtn	*ret;
 
@@ -15,7 +27,7 @@ static t_s_rbtn				*greater(
 }
 
 static t_s_rbtn				*lesser(
-	t_s_rbtn	*of)
+	t_s_rbtn *of)
 {
 	t_s_rbtn	*ret;
 
@@ -29,8 +41,8 @@ static t_s_rbtn				*lesser(
 }
 
 static t_s_rbtn				*get_replacement(
-	t_s_rbtn	*of,
-	t_s_rbt		*tree)
+	t_s_rbtn *of,
+	t_s_rbt *tree)
 {
 	t_s_rbtn	*ret;
 
@@ -41,25 +53,25 @@ static t_s_rbtn				*get_replacement(
 	return (ret);
 }
 
-static void				swap(
-	t_s_rbtn	*this,
-	t_s_rbtn	*forthis,
-	size_t		key_sz)
+static void					swap(
+	t_s_rbtn *this,
+	t_s_rbtn *forthis,
+	size_t key_sz)
 {
 	if (this == forthis)
-		return;
+		return ;
 	ft_cleanfree(this->key, key_sz);
 	this->key = forthis->key;
 	this->datum = forthis->datum;
 }
 
-int						remove(
-	void			*key,
-	t_rbt_applyee	foo,
-	void			*p_tree,
-	void			**ret_p_datum)
+int							remove(
+	void *key,
+	t_rbt_applyee foo,
+	void *p_tree,
+	void **ret_p_datum)
 {
-	t_s_rbt * const	tree = (t_s_rbt*)p_tree;
+	t_s_rbt *const	tree = (t_s_rbt*)p_tree;
 	t_s_rbtn		*node;
 	t_s_rbtn		*rnode;
 	int				r;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   insert_rebalance.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/07 07:56:11 by nmauvari          #+#    #+#             */
+/*   Updated: 2018/09/07 07:56:13 by nmauvari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "inner.h"
 
 /*
@@ -34,9 +46,8 @@ static void					black_uncle(
 	rotate(!(p1->attr & LEFT), p2);
 }
 
-void
-	insert_rebalance(
-		t_s_rbtn *p0)
+void						insert_rebalance(
+	t_s_rbtn *p0)
 {
 	t_s_rbtn	*p1;
 	t_s_rbtn	*p2;
