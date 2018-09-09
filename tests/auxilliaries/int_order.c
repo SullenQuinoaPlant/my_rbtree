@@ -6,7 +6,7 @@ t_e_comp
 {
 	int		res;
 
-	res = *(int*)a < *(int*)b;
+	res = *(int*)a - *(int*)b;
 	if (res < 0)
 		return (e_lt);
 	else if (res > 0)

@@ -15,7 +15,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 		int		i;
 		t_s_rbt	*p;
 
-		if (rbt_init(int_order, sizeof(int), (void**)&p))
+		if (!(rbt_init(int_order, sizeof(int), (void**)&p)))
 			for (i = 0; i < INC1; i++)
 				rbtn_insert(0, &i, p);
 		assert_true(uniform_depth(p));
@@ -27,7 +27,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 		int		i;
 		t_s_rbt	*p;
 
-		if (rbt_init(int_order, sizeof(int), (void**)&p))
+		if (!(rbt_init(int_order, sizeof(int), (void**)&p)))
 			for (i = 0; i < INC2; i++)
 				rbtn_insert(0, &i, p);
 		int	print_tree(void* nope) {

@@ -19,7 +19,7 @@ include $(AUX_DIR)/Makefile
 #BUILD TESTS
 
 .PHONY : build-tests
-build_tests\
+build-tests\
 :\
 set_utest_flags def\
 test_prerequisites\
@@ -79,7 +79,7 @@ $(LIBS_L)/$(LIBNAME).a
 #RUN TESTS :
 
 .PHONY : unit-tests ut
-unit-tests ut : list_tests build_tests run_tests
+unit-tests ut : list_tests build-tests run_tests
 
 .PHONY : run_tests
 run_tests : $(EXECUTION_STAMPS)
