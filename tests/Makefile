@@ -63,8 +63,8 @@ $(LIBS_L)/$(LIBNAME).a
 		$<\
 		-L $(LIBS_L)\
 		-lcmocka\
-		-l$(NAME)\
 		-laux\
+		-l$(NAME)\
 		-lft\
 		-o $@\
 		-Wl,-rpath=$$(readlink -e $(LIBS_L))\

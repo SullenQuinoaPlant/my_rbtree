@@ -11,6 +11,7 @@ int		main()
 		for (i = 0; i < INC1; i++)
 			rbtn_insert(0, &i, p);
 	ret = uniform_depth(p);
+	print_tree(p);
 	rbt_delete((void**)&p);
 	return (0);
 }

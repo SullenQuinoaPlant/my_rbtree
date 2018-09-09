@@ -30,15 +30,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 		if (!(rbt_init(int_order, sizeof(int), (void**)&p)))
 			for (i = 0; i < INC2; i++)
 				rbtn_insert(0, &i, p);
-		int	print_tree(void* nope) {
-			static int	count;
-
-			(void)nope;
-			printf("%d ", count);
-			return (count++);
-		}
-		printf("printing tree: \n");
-		rbt_apply_inord(print_tree, (void*)p);
+		print_tree(p);
 		assert_true(print_tree(0) == INC2);
 		assert_true(uniform_depth(p));
 		rbt_delete((void**)&p);

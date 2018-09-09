@@ -5,7 +5,8 @@ endif
 
 AUX_TARGETS =\
 	check_depth\
-	int_order
+	int_order\
+	print_tree
 
 AUX_SRCS := $(patsubst %,$(AUX_DIR)/%.c,$(AUX_TARGETS))
 AUX_OBJS := $(patsubst %,$(AUX_DIR)/%.o,$(AUX_TARGETS))
@@ -27,5 +28,9 @@ $(AUX_DIR)/%.o : $(AUX_DIR)/%.c
 		-lft\
 		-o $@\
 
+.PHONY : clean-auxobjs
+clean-auxobjs :
+	-rm $(AUX_OBJS)
+
 .PHONY : re-libaux
-re-libaux : clean-libaux libaux
+re-libaux : clean-libaux clean-auxobjs libaux

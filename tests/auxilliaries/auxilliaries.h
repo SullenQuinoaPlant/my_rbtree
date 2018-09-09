@@ -14,4 +14,8 @@ t_e_comp
 	int_order(
 		void *a, void *b);
 
+int
+	print_tree(
+		t_s_rbt *tree);
+
 #endif

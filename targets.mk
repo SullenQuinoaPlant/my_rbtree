@@ -16,6 +16,7 @@ TARGETS := \
 	removal_rebalance_redparent \
 	remove1 \
 	remove2 \
+	reposition_anchor \
 	retrieve \
 	rotate \
 	search
