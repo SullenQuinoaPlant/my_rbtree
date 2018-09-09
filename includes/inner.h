@@ -18,11 +18,11 @@
 # include "libft.h"
 # include "myrbtree.h"
 
-typedef enum e_color			t_e_col;
-enum							e_color {
-	e_red,
-	e_black
-};
+/*
+**return values for functions operating on tree:
+*/
+# define UNROTATED 1
+# define ROTATED 2
 
 typedef enum e_kin_nodes		t_e_kns;
 enum							e_kin_nodes {
@@ -38,7 +38,6 @@ enum							e_kin_nodes {
 */
 # define RED 0X01
 # define LEFT 0X02
-# define WEIGHT 0X04
 
 typedef struct s_rbtree_node	t_s_rbtn;
 struct							s_rbtree_node {
@@ -91,7 +90,7 @@ void							rem_reb_red(
 void							removal_rebalance(
 	t_s_rbtn	*weighted_child);
 
-void							remove_actually(
+int								remove_actually(
 	t_s_rbtn	*removee,
 	size_t		key_sz);
 
@@ -100,6 +99,9 @@ int								remove_node(
 	t_rbt_applyee	foo,
 	void			*p_tree,
 	void			**ret_p_datum);
+
+void							reposition_anchor(
+	t_s_rbtn		**p_anchor);
 
 void							rotate(
 	int			left_or_not,

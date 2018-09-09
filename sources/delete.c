@@ -24,16 +24,6 @@ void			del_node(
 	ft_cleanfree(node, sizeof(t_s_rbtn));
 }
 
-void			rbt_delete(
-	void **p_tree)
-{
-	t_s_rbt *const	tree = (t_s_rbt*)*p_tree;
-
-	del_node(tree->key_sz, tree->anchor);
-	ft_cleanfree(tree, sizeof(t_s_rbt));
-	*p_tree = 0;
-}
-
 static void		del_node_free(
 	size_t datum_sz,
 	t_s_rbtn *node)
@@ -45,6 +35,16 @@ static void		del_node_free(
 	del_node_free(datum_sz, node->kin[e_left]);
 	del_node_free(datum_sz, node->kin[e_right]);
 	ft_cleanfree(node, sizeof(t_s_rbtn));
+}
+
+void			rbt_delete(
+	void **p_tree)
+{
+	t_s_rbt *const	tree = (t_s_rbt*)*p_tree;
+
+	del_node(tree->key_sz, tree->anchor);
+	ft_cleanfree(tree, sizeof(t_s_rbt));
+	*p_tree = 0;
 }
 
 void			rbt_delete_free(

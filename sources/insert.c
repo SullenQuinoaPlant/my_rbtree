@@ -57,6 +57,8 @@ int							rbtn_insert(
 		new->datum = datum;
 		if ((r = (insert(new, tree->order, &tree->anchor) == RBT_DUP_KEY)))
 			del_node(tree->key_sz, new);
+		else
+			reposition_anchor(&tree->anchor);
 		return (r);
 	}
 	else if (new)

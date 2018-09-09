@@ -85,6 +85,7 @@ int							remove_node(
 	if (ret_p_datum)
 		*ret_p_datum = node->datum;
 	swap(node, rnode, tree->key_sz);
-	remove_actually(rnode, tree->key_sz);
+	if (remove_actually(rnode, tree->key_sz) == ROTATED)
+		reposition_anchor(&tree->anchor);
 	return (r);
 }
