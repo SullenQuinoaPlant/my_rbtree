@@ -3,11 +3,14 @@
 
 # include "inner.h"
 
+# define RED_VIOLATION 1
+# define BLACK_VIOLATION 2
+
 int
 	uniform_depth(
 		t_s_rbt *tree);
 
-int
+t_e_comp
 	int_order(
 		void *a, void *b);
 

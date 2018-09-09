@@ -1,4 +1,4 @@
-#include "auxilliaries.h"
+#include "aux_inner.h"
 
 static
 int
@@ -17,13 +17,17 @@ int
 {
 	int		ret;
 
-	if (!node)
-		return (is_good(depth, previous));
+	if (!node && !is_good(depth, previous))
+		return (BLACK_VIOLATION);
+	else
+		return (0);
 	if (!(node->attr & RED))
 		depth++;
-	ret = 1;
-	if ((ret *= recurse(node->kin[e_left], depth, previous))
-		ret *= recurse(node->kin[e_right], depth, previous);
+	else if (node->kin[e_parent]->attr & RED)
+		return (RED_VIOLATION);
+	ret = 0;
+	if (!(ret = recurse(node->kin[e_left], depth, previous)))
+		ret = recurse(node->kin[e_right], depth, previous);
 	return (ret);
 }
 

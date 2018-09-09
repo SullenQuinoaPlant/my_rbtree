@@ -65,7 +65,7 @@ static void					swap(
 	this->datum = forthis->datum;
 }
 
-int							remove(
+int							remove_node(
 	void *key,
 	t_rbt_applyee foo,
 	void *p_tree,

@@ -5,14 +5,14 @@ TARGETS := \
 	apply_preord \
 	apply_prerevord \
 	apply_revord \
-	delete \
 	delete_apply \
+	delete \
 	init \
 	insert \
 	insert_rebalance \
 	rbtn_remove \
-	removal_rebalance \
 	removal_rebalance_blackparent \
+	removal_rebalance \
 	removal_rebalance_redparent \
 	remove1 \
 	remove2 \

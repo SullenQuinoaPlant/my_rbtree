@@ -10,20 +10,22 @@ EXECUTION_STAMPS := $(TEST_OBJS:.o=.execution.stamp)
 CFLAGS_UTEST = -fno-builtin -g
 CFLAGS_UTEST += $(CFLAGS_MORE) #$(CFLAGS) were annoying the hell out of me
 
-AUX_DIR = auxilliaries
-include $(UTEST_DIR)/$(AUX_DIR)/Makefile
+AUX_DIR = $(UTEST_DIR)/auxilliaries
+include $(AUX_DIR)/Makefile
 
 
 
 ############
 #BUILD TESTS
 
-.PHONY : build_tests
+.PHONY : build-tests
 build_tests\
 :\
 set_utest_flags def\
 test_prerequisites\
 $(TEST_OBJS)
+	@echo $(TEST_SRCS)
+	@echo $(TEST_OBJS)
 
 
 .PHONY : set_utest_flags
@@ -57,12 +59,13 @@ $(UTEST_DIR)/%.test.o\
 $(UTEST_DIR)/%.test.c\
 $(LIBS_L)/$(LIBNAME).a
 	$(CC) $(CFLAGS_UTEST)\
-		-I $(LIBS_I) -I $(SRC_DIR)\
+		-I $(LIBS_I) -I $(SRC_DIR) -I $(INC_DIR)\
 		$<\
 		-L $(LIBS_L)\
 		-lcmocka\
 		-l$(NAME)\
 		-laux\
+		-lft\
 		-o $@\
 		-Wl,-rpath=$$(readlink -e $(LIBS_L))\
 
@@ -104,7 +107,7 @@ clean-tests :
 
 
 
-.PHONY : list_tests
+.PHONY : list-tests
 list_tests :
 	@echo "source dir is : $(SRC_DIR)"
 	@echo "list of test sources:"

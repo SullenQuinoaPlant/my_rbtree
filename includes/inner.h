@@ -91,15 +91,15 @@ void							rem_reb_red(
 void							removal_rebalance(
 	t_s_rbtn	*weighted_child);
 
-int								remove(
+void							remove_actually(
+	t_s_rbtn	*removee,
+	size_t		key_sz);
+
+int								remove_node(
 	void			*at_key,
 	t_rbt_applyee	foo,
 	void			*p_tree,
 	void			**ret_p_datum);
-
-void							remove_actually(
-	t_s_rbtn	*removee,
-	size_t		key_sz);
 
 void							rotate(
 	int			left_or_not,
