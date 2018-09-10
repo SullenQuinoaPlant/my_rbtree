@@ -43,7 +43,6 @@ int							rbtn_insert(
 {
 	t_s_rbt *const	tree = (t_s_rbt*)p_tree;
 	t_s_rbtn		*new;
-	int				r;
 
 	if (!key || !p_tree)
 		return (RBT_BAD_ARG);
