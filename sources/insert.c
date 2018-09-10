@@ -20,21 +20,20 @@ static int					insert(
 	t_e_comp	cmp;
 	int			r;
 
-	if (!*in)
+	while (*in)
 	{
-		*in = this;
-		insert_rebalance(this);
-		return (RBT_SUCCESS);
+		if ((cmp = (*with)(this->key, (*in)->key)) == e_eq)
+			return (RBT_DUP_KEY);
+		else if (cmp == e_lt)
+			this->attr |= LEFT;
+		else
+			this->attr &= ~LEFT;
+		this->kin[e_parent] = *in;
+		in = &((*in)->kin[cmp == e_lt ? e_left : e_right]);
 	}
-	if ((cmp = (*with)(this->key, (*in)->key)) == e_eq)
-		return (RBT_DUP_KEY);
-	else if (cmp == e_lt)
-		this->attr |= LEFT;
-	else
-		this->attr &= ~LEFT;
-	this->kin[e_parent] = *in;
-	r = insert(this, with, &((*in)->kin[cmp == e_lt ? e_left : e_right]));
-	return (r);
+	*in = this;
+	insert_rebalance(this);
+	return (RBT_SUCCESS);
 }
 
 int							rbtn_insert(
