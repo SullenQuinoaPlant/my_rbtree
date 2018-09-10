@@ -53,7 +53,6 @@ int							rbtn_insert(
 		new->attr = RED;
 		ft_bzero(new->kin, sizeof(new->kin));
 		new->datum = datum;
-		r
 		if ((r = (insert(new, tree->order, &tree->anchor) == RBT_DUP_KEY)))
 			del_node(tree->key_sz, new);
 		else
