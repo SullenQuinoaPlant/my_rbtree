@@ -18,7 +18,6 @@ static int					insert(
 	t_s_rbtn **in)
 {
 	t_e_comp	cmp;
-	int			r;
 
 	while (*in)
 	{
@@ -43,6 +42,7 @@ int							rbtn_insert(
 {
 	t_s_rbt *const	tree = (t_s_rbt*)p_tree;
 	t_s_rbtn		*new;
+	int				r;
 
 	if (!key || !p_tree)
 		return (RBT_BAD_ARG);
@@ -53,6 +53,7 @@ int							rbtn_insert(
 		new->attr = RED;
 		ft_bzero(new->kin, sizeof(new->kin));
 		new->datum = datum;
+		r
 		if ((r = (insert(new, tree->order, &tree->anchor) == RBT_DUP_KEY)))
 			del_node(tree->key_sz, new);
 		else
