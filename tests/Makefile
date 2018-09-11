@@ -43,7 +43,7 @@ cmocka :
 		-I $(LIBS_I) -L $(LIBS_L)\
 	 	$(UTEST_DIR)/cmocka/check_install.c\
 		-lcmocka -o test.o\
-		-Wl,-rpath=$$(readlink -e $(LIBS_L))\
+		-Wl,-rpath $(LIBS_L)\
 		&& ./test.o .;\
 	then\
 		echo "cmocka already installed";\
@@ -67,7 +67,7 @@ $(LIBS_L)/$(LIBNAME).a
 		-l$(NAME)\
 		-lft\
 		-o $@\
-		-Wl,-rpath=$$(readlink -e $(LIBS_L))\
+		-Wl,-rpath $(LIBS_L)\
 
 .PHONY : maintest
 maintest : $(UTEST_DIR)/main.test.o
@@ -103,8 +103,6 @@ run_tests : $(EXECUTION_STAMPS)
 %.execution.stamp : %.o
 	-./$*.o "$(UTEST_DIR)" \
 	&& touch $@
-#argument used to be
-#	"$$(readlink -e $(UTEST_DIR))" \
 
 
 
