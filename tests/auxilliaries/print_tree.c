@@ -13,6 +13,7 @@ int				print_tree(t_s_rbt*p)
 {
 	int		r;
 
-	printf("printing tree: \n");
+	printf("\nprinting tree: \n");
 	r = rbt_apply_inord(printer, (void*)p);
+	return (r);
 }

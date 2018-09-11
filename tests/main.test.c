@@ -6,12 +6,18 @@ int		main()
 	int		i;
 	int		ret;
 	t_s_rbt	*p;
+	t_list	*inserted;
 
 	if (!(rbt_init(int_order, sizeof(int), (void**)&p)))
 		for (i = 0; i < INC1; i++)
-			rbtn_insert(0, &i, p);
-	ret = uniform_depth(p);
+		{
+			ft_lstadd(&inserted, ft_lstnew(&i, sizeof(int)));
+			rbtn_insert(inserted->content, &i, p);
+			print_int_tree(p);
+		}
 	print_tree(p);
+	ft_lstdel(&inserted, 0);
+	ret = uniform_depth(p);
 	rbt_delete((void**)&p);
 	return (0);
 }

@@ -69,6 +69,22 @@ $(LIBS_L)/$(LIBNAME).a
 		-o $@\
 		-Wl,-rpath=$$(readlink -e $(LIBS_L))\
 
+.PHONY : maintest
+maintest : $(UTEST_DIR)/main.test.o
+
+$(UTEST_DIR)/main.test.o\
+:\
+$(UTEST_DIR)/main.test.c\
+$(LIBS_L)/$(LIBNAME).a
+	$(CC) $(CFLAGS_UTEST)\
+		-I $(LIBS_I) -I $(SRC_DIR) -I $(INC_DIR)\
+		$<\
+		-L $(LIBS_L)\
+		-laux\
+		-l$(NAME)\
+		-lft\
+		-o $@\
+
 
 %.test.c : $(UTEST_DIR)/cmocka/my_macro_overlay.h
 	@:

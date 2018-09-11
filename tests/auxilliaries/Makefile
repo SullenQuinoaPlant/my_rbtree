@@ -6,6 +6,7 @@ endif
 AUX_TARGETS =\
 	check_depth\
 	int_order\
+	print_int_tree\
 	print_tree
 
 AUX_SRCS := $(patsubst %,$(AUX_DIR)/%.c,$(AUX_TARGETS))

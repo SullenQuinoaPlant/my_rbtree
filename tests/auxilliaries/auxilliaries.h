@@ -15,6 +15,10 @@ t_e_comp
 		void *a, void *b);
 
 int
+	print_int_tree(
+		t_s_rbt *tree);
+
+int
 	print_tree(
 		t_s_rbt *tree);
 
