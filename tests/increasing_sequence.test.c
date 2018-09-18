@@ -30,8 +30,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 		if (!(rbt_init(int_order, sizeof(int), (void**)&p)))
 			for (i = 0; i < INC2; i++)
 				rbtn_insert(0, &i, p);
-		print_tree(p);
-		assert_true(print_tree(0) == INC2);
+		assert_true(print_tree(p) == 0x1f);
 		assert_false(uniform_depth(p, &tree_depth));
 		assert_true(tree_depth <= my_flog2(INC2));
 		rbt_delete((void**)&p);

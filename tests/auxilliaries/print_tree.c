@@ -6,7 +6,7 @@ static int		printer(void* nope) {
 
 	(void)nope;
 	printf("%d ", count);
-	return (count++);
+	return (++count);
 }
 
 int				print_tree(t_s_rbt*p)
