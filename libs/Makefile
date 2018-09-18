@@ -4,8 +4,8 @@ ifndef ROOT
 endif
 
 
-.PHONY : build-dependencies
-build-dependencies : $(DEPENDENCIES)
+.PHONY : build_dependencies
+build_dependencies : $(DEPENDENCIES)
 	@echo "$(DEPENDENCIES)"
 
 
