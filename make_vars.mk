@@ -23,4 +23,4 @@ ifndef CFLAGS
 endif
 CFLAGS += $(CFLAGS_MORE)
 
-UTEST_DIR := $(ROOT)/tests
+TEST_DIR := $(ROOT)/tests
