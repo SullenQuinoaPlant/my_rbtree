@@ -17,13 +17,17 @@ int
 {
 	int		ret;
 
-	if (!node && !is_good(depth, previous))
-		return (BLACK_VIOLATION);
-	else
-		return (0);
+	if (!node)
+	{
+		if (!is_good(depth, previous))
+			return (BLACK_VIOLATION);
+		else
+			return (0);
+	}
 	if (!(node->attr & RED))
 		depth++;
-	else if (node->kin[e_parent]->attr & RED)
+	else if (node->kin[e_parent] &&
+		node->kin[e_parent]->attr & RED)
 		return (RED_VIOLATION);
 	ret = 0;
 	if (!(ret = recurse(node->kin[e_left], depth, previous)))
