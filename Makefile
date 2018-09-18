@@ -53,7 +53,8 @@ $(RELEASE_DIR) :
 	cp $(INCS) $@/includes
 	cp $(patsubst %,$(LIBS_I)/%.h,$(DEPENDENCIES)) $@/includes
 	cp $(ROOT)/core.mk $@/Makefile
-	cat $(ROOT)/targets.mk $(ROOT)/release_vars.mk > $@/make_vars.mk
+	cat $(ROOT)/targets.mk $(ROOT)/release_vars.mk $(ROOT)/core.mk >\
+		$@/Makefile
 	cd $@ && \
 		git add * && \
 		git commit -m make_release && \

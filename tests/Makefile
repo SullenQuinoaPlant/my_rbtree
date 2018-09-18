@@ -34,11 +34,11 @@ libcmocka_shared :
 .PHONY : build_tests
 build_tests\
 :\
-set_utest_flags def\
+set_test_flags def\
 $(TEST_OBJS)
 
-.PHONY : set_utest_flags
-set_utest_flags :
+.PHONY : set_test_flags
+set_test_flags :
 	$(eval CFLAGS += $(CFLAGS_TEST))
 
 .PHONY : test_prerequisites
@@ -50,7 +50,7 @@ cmocka :
 		-I $(LIBS_I) -L $(LIBS_L)\
 	 	$(TEST_DIR)/cmocka/check_install.c\
 		-lcmocka -o test.o\
-		-Wl,-rpath $(LIBS_L)\
+		-Wl,-rpath=$(LIBS_L)\
 		&& ./test.o .;\
 	then\
 		echo "cmocka installed";\
@@ -112,7 +112,7 @@ clean-tests :
 	-rm $(TEST_DIR)/*.o
 	-rm $(TEST_DIR)/*.stamp
 
-.PHONY : list-tests
+.PHONY : list_tests
 list_tests :
 	@echo "source dir is : $(SRC_DIR)"
 	@echo "list of test sources:"
