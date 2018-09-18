@@ -21,7 +21,7 @@ $(LIBS_L)/libaux.a : $(AUX_OBJS)
 
 $(AUX_DIR)/%.o : $(AUX_DIR)/%.c
 	$(CC)\
-		$(CFLAGS_UTEST)\
+		$(CFLAGS_TEST)\
 		-I $(LIBS_I) -I $(SRC_DIR) -I $(INC_DIR)\
 		-c\
 		$<\
