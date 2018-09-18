@@ -33,12 +33,14 @@ int
 
 int
 	uniform_depth(
-		t_s_rbt *tree)
+		t_s_rbt *tree, int *ret_depth)
 {
 	int		depth;
 	int		ret;
 
 	depth = -1;
 	ret = recurse(tree->anchor, 0, &depth);
+	if (ret_depth)
+		*ret_depth = depth;
 	return (ret);
 }

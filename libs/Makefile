@@ -28,6 +28,17 @@ $(LIB_DIR)/libft :
 		$@/
 	$(BUILD_LIB)
 
+.PHONY : libmystupidmath
+libmystupidmath : $(LIB_DIR)/libmystupidmath 
+
+$(LIB_DIR)/libmystupidmath :
+	-rm -rf $@
+	git clone \
+		--single-branch \
+		-b release https://github.com/SullenQuinoaPlant/my_stupidmath.git\
+		--depth 1 \
+		$@/
+	$(BUILD_LIB)
 
 
 .PHONY : clean-lib*

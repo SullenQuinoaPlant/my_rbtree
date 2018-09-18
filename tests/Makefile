@@ -10,7 +10,7 @@ EXECUTION_STAMPS := $(TEST_OBJS:.o=.execution.stamp)
 CFLAGS_TEST = -fno-builtin -g
 CFLAGS_TEST += $(CFLAGS_MORE)
 
-TEST_DEPENDENCIES = libaux libcmocka_shared
+TEST_DEPENDENCIES = libaux libcmocka_shared libmystupidmath
 
 
 .PHONY : tests_all
@@ -27,19 +27,19 @@ run_tests
 .PHONY : build_test_dependencies
 build_test_dependencies : $(TEST_DEPENDENCIES)
 
+.PHONY : libcmocka_shared
+libcmocka_shared :
+	$(MAKE) -C $(TEST_DIR)/cmocka
+
 .PHONY : build_tests
 build_tests\
 :\
 set_utest_flags def\
 $(TEST_OBJS)
-	@echo $(TEST_SRCS)
-	@echo $(TEST_OBJS)
-
 
 .PHONY : set_utest_flags
 set_utest_flags :
 	$(eval CFLAGS += $(CFLAGS_TEST))
-
 
 .PHONY : test_prerequisites
 test_prerequisites : cmocka
@@ -68,12 +68,11 @@ $(LIBS_L)/$(LIBNAME).a
 		-I $(LIBS_I) -I $(SRC_DIR) -I $(INC_DIR)\
 		$<\
 		-L $(LIBS_L)\
-		-lcmocka\
-		-laux\
+		$(patsubst lib%,-l%,$(TEST_DEPENDENCIES))\
 		-l$(NAME)\
-		-lft\
+		$(patsubst lib%,-l%,$(DEPENDENCIES))\
 		-o $@\
-		-Wl,-rpath $(LIBS_L)\
+		-Wl,-rpath=$(LIBS_L)\
 
 .PHONY : maintest
 maintest : $(TEST_DIR)/main.test.o
@@ -90,12 +89,6 @@ $(LIBS_L)/$(LIBNAME).a
 		-l$(NAME)\
 		-lft\
 		-o $@\
-
-
-%.test.c : $(TEST_DIR)/cmocka/my_macro_overlay.h
-	@:
-
-
 
 ############
 #RUN TESTS :

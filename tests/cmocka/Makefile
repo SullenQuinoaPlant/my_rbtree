@@ -6,12 +6,17 @@ endif
 BUILD_DIR = cmocka_build
 SOURCE_DIR = cmocka_source
 
-cmocka : $(BUILD_DIR) $(SOURCE_DIR)
+.PHONY : cmocka
+cmocka : $(BUILD_DIR) $(SOURCE_DIR) build install
+
+.PHONY : build
+build :
 	cd $(BUILD_DIR) && cmake ../$(SOURCE_DIR) && make;
+
+.PHONY : install
+install :
 	cp $(SOURCE_DIR)/include/cmocka.h $(LIBS_I)/
 	cp $(BUILD_DIR)/src/libcmocka* $(LIBS_L)/
-	rm -rf $(BUILD_DIR) 
-	rm -rf $(SOURCE_DIR) 
 
 $(BUILD_DIR) :
 	if ! [ -d $(BUILD_DIR) ];\

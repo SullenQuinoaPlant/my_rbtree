@@ -27,7 +27,7 @@ include $(LIB_DIR)/Makefile
 ########
 #TESTS :
 include $(TEST_DIR)/Makefile
-inculde $(AUX_DIR)/Makefile
+include $(AUX_DIR)/Makefile
 
 
 
@@ -38,7 +38,10 @@ RELEASE_DIR = release_$(NAME)
 
 .PHONY : release
 release :
-	if [ -d $(RELEASE_DIR) ];\
+
+.PHONY : $(RELEASE_DIR)
+$(RELEASE_DIR) :
+	if [ -d $@ ];\
 	then rm -rf $(RELEASE_DIR)/;\
 	fi
 	git clone \
@@ -48,12 +51,13 @@ release :
 		$(RELEASE_DIR)
 	cd $(RELEASE_DIR) && git rm -rf *
 	cp auteur $(RELEASE_DIR)/
-	cp -r $(SRC_DIR)/* $(RELEASE_DIR)/
-#the following must override the existing Makefile
-	cp core.mk $(RELEASE_DIR)/Makefile
-	cp make_vars_release.mk $(RELEASE_DIR)/make_vars.mk
-	cp $(patsubst %,$(LIBS_I)/%.h,$(DEPENDENCIES)) \
-		$(RELEASE_DIR)/
+	mkdir $@/sources
+	cp $(SRCS) $@/sources
+	mkdir $@/includes
+	cp $(INCS) $@/includes
+	cp $(patsubst %,$(LIBS_I)/%.h,$(DEPENDENCIES)) $@/includes
+	cp $(ROOT)/core.mk $@/Makefile
+	cat $(ROOT)/targets.mk $(ROOT)/release_vars.mk > $@/make_vars.mk
 	cd $(RELEASE_DIR) && \
 		git add * && \
 		git commit -m make_release && \

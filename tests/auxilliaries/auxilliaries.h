@@ -8,7 +8,7 @@
 
 int
 	uniform_depth(
-		t_s_rbt *tree);
+		t_s_rbt *tree, int *ret_depth);
 
 t_e_comp
 	int_order(

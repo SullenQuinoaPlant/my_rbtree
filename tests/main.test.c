@@ -6,6 +6,7 @@ int		main()
 	int		i;
 	int		ret;
 	t_s_rbt	*p;
+	int		tree_depth;
 	t_list	*inserted;
 
 	if (!(rbt_init(int_order, sizeof(int), (void**)&p)))
@@ -17,7 +18,7 @@ int		main()
 		}
 	print_tree(p);
 	ft_lstdel(&inserted, 0);
-	ret = uniform_depth(p);
+	ret = uniform_depth(p, &tree_depth);
 	rbt_delete((void**)&p);
 	return (0);
 }

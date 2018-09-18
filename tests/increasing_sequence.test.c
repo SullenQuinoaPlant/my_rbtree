@@ -3,12 +3,11 @@
 #include "cmocka/my_overlay.h"
 
 #include "libaux.h"
+#include "libmystupidmath.h"
 
 int	declare_tests_and_run(int all_of, char *these[])
 {
-	T(nop,
-		printf("increasing_sequence_tests\n");
-	)
+	int		tree_depth;
 
 	#define INC1 10000
 	T(increasing_sequence,
@@ -18,7 +17,8 @@ int	declare_tests_and_run(int all_of, char *these[])
 		if (!(rbt_init(int_order, sizeof(int), (void**)&p)))
 			for (i = 0; i < INC1; i++)
 				rbtn_insert(0, &i, p);
-		assert_true(uniform_depth(p));
+		assert_false(uniform_depth(p, &tree_depth));
+		assert_true(tree_depth <= my_flog2(INC1));
 		rbt_delete((void**)&p);
 	)
 
@@ -32,7 +32,8 @@ int	declare_tests_and_run(int all_of, char *these[])
 				rbtn_insert(0, &i, p);
 		print_tree(p);
 		assert_true(print_tree(0) == INC2);
-		assert_true(uniform_depth(p));
+		assert_false(uniform_depth(p, &tree_depth));
+		assert_true(tree_depth <= my_flog2(INC2));
 		rbt_delete((void**)&p);
 	)
 

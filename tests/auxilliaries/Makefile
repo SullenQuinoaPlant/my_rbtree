@@ -1,5 +1,5 @@
 ifndef ROOT
-	ROOT = ../../
+	ROOT = ../..
 	include $(ROOT)/Makefile
 endif
 
@@ -33,5 +33,5 @@ $(AUX_DIR)/%.o : $(AUX_DIR)/%.c
 clean-auxobjs :
 	-rm $(AUX_OBJS)
 
-.PHONY : re-libaux
-re-libaux : clean-libaux clean-auxobjs libaux
+.PHONY : re_libaux
+re_libaux : clean-libaux clean-auxobjs libaux
