@@ -27,6 +27,7 @@ include $(LIB_DIR)/Makefile
 ########
 #TESTS :
 include $(TEST_DIR)/Makefile
+inculde $(AUX_DIR)/Makefile
 
 
 

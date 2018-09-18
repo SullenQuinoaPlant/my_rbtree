@@ -8,21 +8,29 @@ TEST_OBJS := $(TEST_SRCS:.c=.o)
 EXECUTION_STAMPS := $(TEST_OBJS:.o=.execution.stamp)
 
 CFLAGS_TEST = -fno-builtin -g
-CFLAGS_TEST += $(CFLAGS_MORE) #$(CFLAGS) were annoying the hell out of me
+CFLAGS_TEST += $(CFLAGS_MORE)
 
-AUX_DIR = $(TEST_DIR)/auxilliaries
-include $(AUX_DIR)/Makefile
+TEST_DEPENDENCIES = libaux libcmocka_shared
 
+
+.PHONY : tests_all
+tests_all :\
+build_test_dependencies\
+clean-tests\
+build_tests\
+run_tests
 
 
 ############
 #BUILD TESTS
 
-.PHONY : build-tests
-build-tests\
+.PHONY : build_test_dependencies
+build_test_dependencies : $(TEST_DEPENDENCIES)
+
+.PHONY : build_tests
+build_tests\
 :\
 set_utest_flags def\
-test_prerequisites\
 $(TEST_OBJS)
 	@echo $(TEST_SRCS)
 	@echo $(TEST_OBJS)
@@ -34,8 +42,7 @@ set_utest_flags :
 
 
 .PHONY : test_prerequisites
-test_prerequisites : cmocka libaux
-
+test_prerequisites : cmocka
 
 .PHONY : cmocka
 cmocka : 
@@ -46,10 +53,9 @@ cmocka :
 		-Wl,-rpath $(LIBS_L)\
 		&& ./test.o .;\
 	then\
-		echo "cmocka already installed";\
+		echo "cmocka installed";\
 	else\
-		echo "installing cmocka";\
-		$(MAKE) -C $(TEST_DIR)/cmocka/;\
+		echo "cmocka not installed";\
 	fi
 	-@rm ./test.o
 
@@ -94,8 +100,8 @@ $(LIBS_L)/$(LIBNAME).a
 ############
 #RUN TESTS :
 
-.PHONY : unit-tests ut
-unit-tests ut : list_tests build-tests run_tests
+.PHONY : tests
+tests : list_tests build_tests run_tests
 
 .PHONY : run_tests
 run_tests : $(EXECUTION_STAMPS)
@@ -108,18 +114,10 @@ run_tests : $(EXECUTION_STAMPS)
 
 ###############
 #MISCELLANEOUS:
-
-.PHONY : all_unit_tests aut
-all_unit_tests aut : clean-tests ut
-
-
-
 .PHONY : clean-tests
 clean-tests :
 	-rm $(TEST_DIR)/*.o
 	-rm $(TEST_DIR)/*.stamp
-
-
 
 .PHONY : list-tests
 list_tests :
