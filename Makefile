@@ -30,14 +30,10 @@ include $(TEST_DIR)/Makefile
 include $(AUX_DIR)/Makefile
 
 
-
 ##########
 #RELEASE :
-
-RELEASE_DIR = release_$(NAME)
-
 .PHONY : release
-release :
+release : $(RELEASE_DIR)
 
 .PHONY : $(RELEASE_DIR)
 $(RELEASE_DIR) :
@@ -48,9 +44,9 @@ $(RELEASE_DIR) :
 		--single-branch \
 		-b release \
 		$(GIT_REPO) \
-		$(RELEASE_DIR)
-	cd $(RELEASE_DIR) && git rm -rf *
-	cp auteur $(RELEASE_DIR)/
+		$@
+	cd $@ && git rm -rf *
+	cp auteur $@/
 	mkdir $@/sources
 	cp $(SRCS) $@/sources
 	mkdir $@/includes
@@ -58,7 +54,7 @@ $(RELEASE_DIR) :
 	cp $(patsubst %,$(LIBS_I)/%.h,$(DEPENDENCIES)) $@/includes
 	cp $(ROOT)/core.mk $@/Makefile
 	cat $(ROOT)/targets.mk $(ROOT)/release_vars.mk > $@/make_vars.mk
-	cd $(RELEASE_DIR) && \
+	cd $@ && \
 		git add * && \
 		git commit -m make_release && \
 		git push origin release
