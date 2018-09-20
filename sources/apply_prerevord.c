@@ -21,7 +21,7 @@ static int				recurse(
 	ret = 0;
 	if (!node)
 		return (0);
-	ret |= foo(node->datum);
+	ret |= foo(node->key, &node->datum);
 	ret |= recurse(foo, node->kin[e_right]);
 	ret |= recurse(foo, node->kin[e_left]);
 	return (ret);

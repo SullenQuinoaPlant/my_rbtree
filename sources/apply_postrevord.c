@@ -23,7 +23,7 @@ static int					recurse(
 		return (0);
 	ret |= recurse(foo, node->kin[e_right]);
 	ret |= recurse(foo, node->kin[e_left]);
-	ret |= foo(node->datum);
+	ret |= foo(node->key, &node->datum);
 	return (ret);
 }
 

@@ -81,7 +81,7 @@ int							remove_node(
 	rnode = get_replacement(node, tree);
 	r = RBT_SUCCESS;
 	if (foo)
-		r = (*foo)(node->datum);
+		r = (*foo)(node->key, &node->datum);
 	if (ret_p_datum)
 		*ret_p_datum = node->datum;
 	swap(node, rnode, tree->key_sz);
