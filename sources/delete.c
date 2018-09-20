@@ -30,7 +30,7 @@ static void		del_node_free(
 {
 	if (!node)
 		return ;
-	free(node->key);
+	ft_cleanfree(node->key, key_sz);
 	ft_cleanfree(node->datum, datum_sz);
 	del_node_free(datum_sz, node->kin[e_left]);
 	del_node_free(datum_sz, node->kin[e_right]);
