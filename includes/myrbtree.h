@@ -27,10 +27,12 @@ enum									e_compare {
 **compare first arg to second arg
 */
 typedef t_e_comp						(*t_rbt_ordering)(
-	void*, void*);
+	void *a,
+	void *b);
 
 typedef int								(*t_rbt_applyee)(
-	void*);
+	void *key,
+	void **p_datum);
 
 /*
 **functions
