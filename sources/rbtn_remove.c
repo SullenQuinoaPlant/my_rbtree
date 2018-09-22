@@ -36,9 +36,11 @@ int					rbtn_remove_retrieve(
 }
 
 static int			here_free(
-	void *p)
+	void *p_key,
+	void **p_datum)
 {
-	free(p);
+	(void)p_key;
+	free(*p_datum);
 	return (RBT_SUCCESS);
 }
 
