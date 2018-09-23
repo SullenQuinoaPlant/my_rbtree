@@ -4,9 +4,11 @@ ifndef ROOT
 endif
 
 AUX_TARGETS =\
-	check_depth\
+	addr_order\
+	addr_tree_printer\
 	int_order\
-	print_int_tree\
+	check_depth\
+	print_addr_tree\
 	print_tree
 
 AUX_SRCS := $(patsubst %,$(AUX_DIR)/%.c,$(AUX_TARGETS))

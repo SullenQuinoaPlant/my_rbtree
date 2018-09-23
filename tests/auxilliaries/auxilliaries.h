@@ -7,12 +7,22 @@
 # define BLACK_VIOLATION 2
 
 int
-	uniform_depth(
-		t_s_rbt *tree, int *ret_depth);
+	addr_tree_printer(
+		void *unused,
+		void *key,
+		void **datum);
+
+t_e_comp
+	addr_order(
+		void *a, void *b);
 
 t_e_comp
 	int_order(
 		void *a, void *b);
+
+int
+	uniform_depth(
+		t_s_rbt *tree, int *ret_depth);
 
 int
 	print_int_tree(
