@@ -71,14 +71,13 @@ int	declare_tests_and_run(int all_of, char *these[])
 				}
 			}
 			printf("printing tree; \n");
-			rbt_apply_inord(addr_tree_printer, (void*)0, p);
+			rbt_apply_inord(&addr_tree_printer, (void*)0, p);
 			for (i = 0; i < INC2; i++)
 			{
 				if (ar[i])
 				{
 					rbtn_retrieve(&ar[i], (void*)p, &ret);
-					if (ret)
-						assert_true(*(int*)ret == i);
+					assert_true(*(int*)ret == i);
 				}
 			}
 			rbt_delete((void**)&p);

@@ -8,7 +8,7 @@ AUX_TARGETS =\
 	addr_tree_printer\
 	int_order\
 	check_depth\
-	print_addr_tree\
+	print_int_tree\
 	print_tree
 
 AUX_SRCS := $(patsubst %,$(AUX_DIR)/%.c,$(AUX_TARGETS))

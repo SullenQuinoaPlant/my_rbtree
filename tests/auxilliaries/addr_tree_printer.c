@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "aux_inner.h"
 
-int			print(
+int				addr_tree_printer(
 	void *a,
 	void *k,
 	void **pd)
