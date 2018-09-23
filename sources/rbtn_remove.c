@@ -57,8 +57,8 @@ int					rbtn_remove_free(
 {
 	t_s_apack	foo_pkg;
 
-	foo.f = here_free;
-	foo.arg = 0;
+	foo_pkg.f = here_free;
+	foo_pkg.arg = 0;
 	
 	return (remove_node(key, &foo_pkg, p_tree, (void**)0));
 }
