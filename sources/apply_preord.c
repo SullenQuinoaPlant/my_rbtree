@@ -14,6 +14,7 @@
 
 static int				recurse(
 	t_rbt_applyee foo,
+	void *foo_arg,
 	t_s_rbtn *node)
 {
 	int		ret;
@@ -21,19 +22,20 @@ static int				recurse(
 	ret = 0;
 	if (!node)
 		return (0);
-	ret |= foo(node->key, &node->datum);
-	ret |= recurse(foo, node->kin[e_left]);
-	ret |= recurse(foo, node->kin[e_right]);
+	ret |= foo(foo_arg, node->key, &node->datum);
+	ret |= recurse(foo, foo_arg, node->kin[e_left]);
+	ret |= recurse(foo, foo_arg, node->kin[e_right]);
 	return (ret);
 }
 
 int						rbt_apply_preord(
 	t_rbt_applyee foo,
+	void *foo_arg,
 	void *p_tree)
 {
 	int		ret;
 
 	ret = 0;
-	ret = recurse(foo, ((t_s_rbt*)p_tree)->anchor);
+	ret = recurse(foo, foo_arg, ((t_s_rbt*)p_tree)->anchor);
 	return (ret);
 }

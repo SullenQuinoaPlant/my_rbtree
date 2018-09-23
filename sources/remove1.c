@@ -67,7 +67,7 @@ static void					swap(
 
 int							remove_node(
 	void *key,
-	t_rbt_applyee foo,
+	t_s_apack *foo_pkg,
 	void *p_tree,
 	void **ret_p_datum)
 {
@@ -80,8 +80,8 @@ int							remove_node(
 		return (RBT_KEY_NOT_FOUND);
 	rnode = get_replacement(node, tree);
 	r = RBT_SUCCESS;
-	if (foo)
-		r = (*foo)(node->key, &node->datum);
+	if (foo_pkg)
+		r = (foo_pkg->f)(foo_pkg->arg, node->key, &node->datum);
 	if (ret_p_datum)
 		*ret_p_datum = node->datum;
 	swap(node, rnode, tree->key_sz);

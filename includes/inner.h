@@ -40,7 +40,8 @@ enum							e_kin_nodes {
 # define LEFT 0X02
 
 typedef struct s_rbtree_node	t_s_rbtn;
-struct							s_rbtree_node {
+struct							s_rbtree_node
+{
 	void		*key;
 	int			attr;
 	t_s_rbtn	*kin[e_tekns_sz];
@@ -48,11 +49,19 @@ struct							s_rbtree_node {
 };
 
 typedef struct s_red_black_tree	t_s_rbt;
-struct							s_red_black_tree {
+struct							s_red_black_tree
+{
 	t_rbt_ordering	order;
 	size_t			key_sz;
 	t_s_rbtn		*anchor;
 	unsigned int	ticker;
+};
+
+typedef struct s_applyee_and_arg_package	t_s_apack;
+struct							s_applyee_and_arg_package
+{
+	t_rbt_applyee	f;
+	void			*arg;
 };
 
 /*
@@ -95,8 +104,8 @@ int								remove_actually(
 	size_t		key_sz);
 
 int								remove_node(
-	void			*at_key,
-	t_rbt_applyee	foo,
+	void			*p_key,
+	t_s_apack		*foo_and_arg_package,
 	void			*p_tree,
 	void			**ret_p_datum);
 
