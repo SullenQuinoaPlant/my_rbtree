@@ -31,6 +31,7 @@ typedef t_e_comp						(*t_rbt_ordering)(
 	void *b);
 
 typedef int								(*t_rbt_applyee)(
+	void *arg,
 	void *key,
 	void **p_datum);
 
@@ -39,6 +40,7 @@ typedef int								(*t_rbt_applyee)(
 */
 int										rbt_apply_inord(
 	t_rbt_applyee	foo,
+	void			*foo_arg,
 	void			*p_tree);
 
 int										rbt_apply_preord(
@@ -94,7 +96,7 @@ int										rbtn_remove_apply(
 int										rbtn_remove_retrieve(
 	void			*key,
 	void			*p_tree,
-	void			*ret_p_datum);
+	void			**ret_p_datum);
 
 int										rbtn_remove_free(
 	void			*key,
