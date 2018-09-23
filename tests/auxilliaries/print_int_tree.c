@@ -10,6 +10,8 @@ int
 {
 	int const*	i = (int*)*p_int;
 
+	(void)nope;
+	(void)nnope;
 	printf("%d ", *i);
 	return (*i);
 }
@@ -19,7 +21,7 @@ int				print_int_tree(t_s_rbt*p)
 	int		r;
 
 	printf("printing tree: \n");
-	r = rbt_apply_inord(printer, (void*)p);
+	r = rbt_apply_inord(printer, 0, (void*)p);
 	printf("\n");
 	return (r);
 }
