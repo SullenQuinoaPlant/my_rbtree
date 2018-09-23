@@ -1,8 +1,14 @@
 #include <stdio.h>
 #include "aux_inner.h"
 
-static int		printer(void* p_int) {
-	int const*	i = (int*)p_int;
+static
+int
+	printer(
+		void *nope,
+		void *nnope,
+		void **p_int)
+{
+	int const*	i = (int*)*p_int;
 
 	printf("%d ", *i);
 	return (*i);

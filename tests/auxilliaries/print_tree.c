@@ -1,10 +1,18 @@
 #include <stdio.h>
 #include "aux_inner.h"
 
-static int		printer(void* nope) {
+static
+int
+	printer(
+		void *nope,
+		void *nnope,
+		void **nnnope)
+{
 	static int	count;
 
 	(void)nope;
+	(void)nnope;
+	(void)nnnope;
 	printf("%d ", count);
 	return (++count);
 }
