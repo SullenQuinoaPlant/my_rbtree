@@ -80,6 +80,9 @@ int	declare_tests_and_run(int all_of, char *these[])
 					assert_true(*(int*)ret == i);
 				}
 			}
+			for (i = 0; i < INC2; i++)
+				if (ar[i])
+					free(ar[i]);
 			rbt_delete((void**)&p);
 		}
 		else
