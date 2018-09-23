@@ -46,7 +46,7 @@ $(RELEASE_DIR) :
 		$(GIT_REPO) \
 		$@
 	cd $@ && git rm -rf *
-	cp auteur $@/
+	cp $(ROOT)/auteur $@/
 	mkdir $@/sources
 	cp $(SRCS) $@/sources
 	mkdir $@/includes
