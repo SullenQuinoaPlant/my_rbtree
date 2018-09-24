@@ -99,9 +99,9 @@ void							rem_reb_red(
 void							removal_rebalance(
 	t_s_rbtn	*weighted_child);
 
-int								remove_actually(
+void							remove_actually(
 	t_s_rbtn	*removee,
-	size_t		key_sz);
+	t_s_rbt		*tree);
 
 int								remove_node(
 	void			*p_key,

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove.c                                           :+:      :+:    :+:   */
+/*   remove1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -86,7 +86,6 @@ int							remove_node(
 		*ret_p_datum = node->datum;
 	if ((rnode = get_replacement(node, tree)) != node)
 		swap(node, rnode, tree->key_sz);
-	if (remove_actually(rnode, tree->key_sz) == ROTATED)
-		reposition_anchor(&tree->anchor);
+	remove_actually(rnode, tree);
 	return (r);
 }
