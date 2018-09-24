@@ -61,8 +61,6 @@ static void					swap(
 	t_s_rbtn *forthis,
 	size_t key_sz)
 {
-	if (this == forthis)
-		return ;
 	ft_cleanfree(this->key, key_sz);
 	this->key = forthis->key;
 	this->datum = forthis->datum;
