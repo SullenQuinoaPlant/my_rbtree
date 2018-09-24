@@ -36,6 +36,38 @@ int	declare_tests_and_run(int all_of, char *these[])
 		rbt_delete((void**)&p);
 	)
 
+	T(static_int_array_and_remove,
+		void	*int_ar;
+			int_ar = ((int[SZ0]){
+				0x9051020,
+				0x9051478,
+				0x90514c8,
+				0x9051518,
+				0x9051568,
+				0x90515b8,
+				0x9051608,
+				0x9051658,
+				0x90516a8,
+				0x90516f8
+			});
+		int		i;
+		t_s_rbt	*p;
+	
+		if ((rbt_init(int_order, sizeof(void*), (void**)&p)))
+			skip();
+		for (i = 0; i < SZ0; i++)
+			rbtn_insert(0, &int_ar[i], (void**)p);
+		for (i = 0; i < SZ0; i++)
+		{
+			rbtn_remove(&int_ar[i], (void**)p);
+			assert_false(uniform_depth(p, &tree_depth));
+			assert_true(tree_depth <= my_flog2(SZ0));
+		}
+		assert_false(uniform_depth(p, &tree_depth));
+		assert_true(tree_depth == 0);
+		rbt_delete((void**)&p);
+	)
+
 	T(static_array_and_remove,
 		void	**addr_ar;
 			addr_ar = ((void*[SZ0]){

@@ -70,6 +70,7 @@ $(LIBS_L)/$(LIBNAME).a
 		-L $(LIBS_L)\
 		$(patsubst lib%,-l%,$(TEST_DEPENDENCIES))\
 		-l$(NAME)\
+		../libs/objects/libmyrbtree.a\
 		$(patsubst lib%,-l%,$(DEPENDENCIES))\
 		-o $@\
 		-Wl,-rpath=$(LIBS_L)\
