@@ -46,10 +46,13 @@ static t_s_rbtn				*get_replacement(
 {
 	t_s_rbtn	*ret;
 
-	if (tree->ticker++ & 0x1)
+	ret = 0;
+	if (tree->ticker++ & 0x1 && of->kin[e_right])
 		ret = greater(of);
-	else
+	else if (of->kin[e_left])
 		ret = lesser(of);
+	else if (of->kin[e_right])
+		ret = greater(of);
 	return (ret);
 }
 
@@ -78,13 +81,13 @@ int							remove_node(
 
 	if (!(node = find_node(key, tree->order, tree->anchor)))
 		return (RBT_KEY_NOT_FOUND);
-	rnode = get_replacement(node, tree);
 	r = RBT_SUCCESS;
 	if (foo_pkg)
 		r = (foo_pkg->f)(foo_pkg->arg, node->key, &node->datum);
 	if (ret_p_datum)
 		*ret_p_datum = node->datum;
-	swap(node, rnode, tree->key_sz);
+	if ((rnode = get_replacement(node, tree)))
+		swap(node, rnode, tree->key_sz);
 	if (remove_actually(rnode, tree->key_sz) == ROTATED)
 		reposition_anchor(&tree->anchor);
 	return (r);
