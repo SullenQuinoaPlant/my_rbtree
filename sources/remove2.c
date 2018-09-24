@@ -27,8 +27,8 @@ int						remove_actually(
 		rotate(p0->attr & LEFT, p1);
 		if (!(p1->attr & RED))
 		{
-			removal_rebalance(p1->kin[e_parent]);
 			p1->attr |= RED;
+			removal_rebalance(p1->kin[e_parent]);
 		}
 	}
 	else
