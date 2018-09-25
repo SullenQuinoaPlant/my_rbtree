@@ -37,7 +37,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 	)
 
 	T(static_int_array_and_remove,
-		void	*int_ar;
+		int		*int_ar;
 			int_ar = ((int[SZ0]){
 				0x9051020,
 				0x9051478,
@@ -102,9 +102,10 @@ int	declare_tests_and_run(int all_of, char *these[])
 
 	#define SZ1 10
 	T(malloced10,
-		int		i;
-		t_s_rbt	*p;
-		void*	ar[SZ1];
+		int			i;
+		t_s_rbt*	p;
+		void*		ar[SZ1];
+		void*		datum;
 
 		if (!(rbt_init(addr_order, sizeof(void*), (void**)&p)))
 			for (i = 0; i < SZ1; i++)
@@ -112,17 +113,30 @@ int	declare_tests_and_run(int all_of, char *these[])
 					rbtn_insert(0, &ar[i], p);
 		assert_false(uniform_depth(p, &tree_depth));
 		assert_true(tree_depth <= my_flog2(SZ1));
+		for (i = 0; i < (SZ1 / 2) + 1; i++)
+			if (ar[i])
+				rbtn_remove(&ar[i], p);
+		assert_false(uniform_depth(p, &tree_depth));
+		assert_true(tree_depth <= my_flog2(SZ1 / 2));
+		for (i = i; i < SZ1; i++)
+			if (ar[i])
+			{
+				datum = (void*)1;
+				rbtn_retrieve(&ar[i], p, &datum);
+				assert_false(datum);
+			}
 		rbt_delete((void**)&p);
 		for (i = 0; i < SZ1; i++)
 			if (ar[i])
 				free(ar[i]);
 	)
 
-	#define SZ2 10000
-	T(malloced10000,
+	#define SZ2 100
+	T(malloced100,
 		int		i;
 		t_s_rbt	*p;
 		void*	ar[SZ2];
+		void*	datum;
 
 		if (!(rbt_init(addr_order, sizeof(void*), (void**)&p)))
 			for (i = 0; i < SZ2; i++)
@@ -130,6 +144,28 @@ int	declare_tests_and_run(int all_of, char *these[])
 					rbtn_insert(0, &ar[i], p);
 		assert_false(uniform_depth(p, &tree_depth));
 		assert_true(tree_depth <= my_flog2(SZ2));
+		for (i = 0; i < (SZ2 / 2) + 1; i++)
+			if (ar[i])
+				rbtn_remove(&ar[i], p);
+		assert_false(uniform_depth(p, &tree_depth));
+		assert_true(tree_depth <= my_flog2(SZ2 / 2));
+		for (i = i; i < SZ2; i++)
+			if (ar[i])
+			{
+				datum = (void*)1;
+				rbtn_retrieve(&ar[i], p, &datum);
+				assert_false(datum);
+			}
+		for (i = 0; i < (SZ2 / 2) + 1; i++)
+			if (ar[i])
+				rbtn_insert(1, &ar[i], p);
+		assert_false(uniform_depth(p, &tree_depth));
+		assert_true(tree_depth <= my_flog2(SZ2));
+		for (i = 0; i < SZ2; i++)
+			if (ar[i])
+				rbtn_remove(&ar[i], p);
+		assert_false(uniform_depth(p, &tree_depth));
+		assert_true(tree_depth == 0);
 		rbt_delete((void**)&p);
 		for (i = 0; i < SZ2; i++)
 			if (ar[i])
