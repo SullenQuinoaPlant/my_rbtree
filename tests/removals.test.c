@@ -113,7 +113,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 					rbtn_insert(0, &ar[i], p);
 		assert_false(uniform_depth(p, &tree_depth));
 		assert_true(tree_depth <= my_flog2(SZ1));
-		for (i = 0; i < (SZ1 / 2) + 1; i++)
+		for( i = 0; i < (SZ1 / 2) + 1; i++)
 			if (ar[i])
 				rbtn_remove(&ar[i], p);
 		assert_false(uniform_depth(p, &tree_depth));
@@ -123,7 +123,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 			{
 				datum = (void*)1;
 				rbtn_retrieve(&ar[i], p, &datum);
-				assert_false(datum);
+				assert_true(datum == 0);
 			}
 		rbt_delete((void**)&p);
 		for (i = 0; i < SZ1; i++)
@@ -144,7 +144,7 @@ int	declare_tests_and_run(int all_of, char *these[])
 					rbtn_insert(0, &ar[i], p);
 		assert_false(uniform_depth(p, &tree_depth));
 		assert_true(tree_depth <= my_flog2(SZ2));
-		for (i = 0; i < (SZ2 / 2) + 1; i++)
+		for( i = 0; i < (SZ2 / 2) + 1; i++)
 			if (ar[i])
 				rbtn_remove(&ar[i], p);
 		assert_false(uniform_depth(p, &tree_depth));
@@ -154,11 +154,11 @@ int	declare_tests_and_run(int all_of, char *these[])
 			{
 				datum = (void*)1;
 				rbtn_retrieve(&ar[i], p, &datum);
-				assert_false(datum);
+				assert_true(datum == 0);
 			}
 		for (i = 0; i < (SZ2 / 2) + 1; i++)
 			if (ar[i])
-				rbtn_insert(1, &ar[i], p);
+				rbtn_insert((void*)1, &ar[i], p);
 		assert_false(uniform_depth(p, &tree_depth));
 		assert_true(tree_depth <= my_flog2(SZ2));
 		for (i = 0; i < SZ2; i++)
