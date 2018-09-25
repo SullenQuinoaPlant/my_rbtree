@@ -32,6 +32,5 @@ void					remove_actually(
 	}
 	else
 		tree->anchor = 0;
-	ft_cleanfree(p0->key, tree->key_sz);
 	ft_cleanfree(p0, sizeof(t_s_rbtn));
 }

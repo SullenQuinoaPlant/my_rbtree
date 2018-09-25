@@ -70,7 +70,6 @@ $(LIBS_L)/$(LIBNAME).a
 		-L $(LIBS_L)\
 		$(patsubst lib%,-l%,$(TEST_DEPENDENCIES))\
 		-l$(NAME)\
-		../libs/objects/libmyrbtree.a\
 		$(patsubst lib%,-l%,$(DEPENDENCIES))\
 		-o $@\
 		-Wl,-rpath=$(LIBS_L)\
@@ -78,9 +77,9 @@ $(LIBS_L)/$(LIBNAME).a
 .PHONY : maintest
 maintest : $(TEST_DIR)/main.test.o
 
-$(TEST_DIR)/main.test.o\
+$(TEST_DIR)/main%.test.o\
 :\
-$(TEST_DIR)/main.test.c\
+$(TEST_DIR)/main%.test.c\
 $(LIBS_L)/$(LIBNAME).a
 	$(CC) $(CFLAGS_TEST)\
 		-I $(LIBS_I) -I $(SRC_DIR) -I $(INC_DIR)\
