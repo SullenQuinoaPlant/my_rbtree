@@ -28,7 +28,7 @@ void					removal_rebalance(
 			rem_reb_red(p1, p2, left);
 			break ;
 		}
-		else
-			p0 = rem_reb_blk(p0, p1, p2, left);
+		else if (!(p0 = rem_reb_blk(p0, p1, p2, left)))
+			break ;
 	}
 }

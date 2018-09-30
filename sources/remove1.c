@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove.c                                           :+:      :+:    :+:   */
+/*   remove1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmauvari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -59,9 +59,9 @@ static t_s_rbtn				*get_replacement(
 static void					swap(
 	t_s_rbtn *this,
 	t_s_rbtn *forthis,
-	size_t key_sz)
+	t_s_rbt *tree)
 {
-	ft_cleanfree(this->key, key_sz);
+	ft_cleanfree(this->key, tree->key_sz);
 	this->key = forthis->key;
 	this->datum = forthis->datum;
 }
@@ -84,9 +84,7 @@ int							remove_node(
 		r = (foo_pkg->f)(foo_pkg->arg, node->key, &node->datum);
 	if (ret_p_datum)
 		*ret_p_datum = node->datum;
-	if ((rnode = get_replacement(node, tree)) != node)
-		swap(node, rnode, tree->key_sz);
-	if (remove_actually(rnode, tree->key_sz) == ROTATED)
-		reposition_anchor(&tree->anchor);
+	swap(node, (rnode = get_replacement(node, tree)), tree);
+	remove_actually(rnode, tree);
 	return (r);
 }
