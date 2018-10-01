@@ -15,7 +15,7 @@
 
 # include <stddef.h>
 
-typedef t_rbtree	(void*);
+typedef void	*t_rbtree;
 
 typedef enum e_compare					t_e_comp;
 enum									e_compare {
